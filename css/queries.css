@@ -109,6 +109,7 @@
   /* MOBILE NAVIGATION */
   .btn-mobile-nav {
     display: block;
+    z-index: 9999;
   }
   .main-nav {
     background-color: rgba(255, 255, 255, 0.973);
@@ -126,7 +127,7 @@
 
     /* Hide nav */
 
-    /* Allowes NO transition at all */
+    /* Allowes NO transition at all: */
     /* display: none; */
 
     /* 1) Hide it visually */
