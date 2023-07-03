@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,6 +16,33 @@
     <title>Parasolka | Żłobek | Przedszkole</title>
   </head>
   <body>
+    <div class="navigation">
+      <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
+      <label class="navigation__button" for="navi-toggle">
+        <span class="navigation__icon">&nbsp;</span>
+      </label>
+      <div class="navigation__background">&nbsp;</div>
+      <nav class="navigation__nav">
+        <ul class="navigation__list">
+          <li class="navigation__item">
+            <a href="#" class="navigation__link"><span>01</span>O nas</a>
+          </li>
+          <li class="navigation__item">
+            <a href="#" class="navigation__link"><span>02</span>Gazetka</a>
+          </li>
+          <li class="navigation__item">
+            <a href="#" class="navigation__link"><span>03</span>Kadra</a>
+          </li>
+          <li class="navigation__item">
+            <a href="#" class="navigation__link"><span>04</span>Opinie</a>
+          </li>
+          <li class="navigation__item">
+            <a href="#" class="navigation__link"><span>05</span>Uwagi</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
     <header class="header">
       <div class="header__logo-box">
         <img src="./img/logo-white.png" alt="Logo" class="header__logo" />
@@ -27,7 +54,7 @@
             >publiczny żłobek i przedszkole</span
           >
         </h1>
-        <a href="#" class="btn btn--white btn--animated">Strefa rodzica</a>
+        <a href="#popup" class="btn btn--white btn--animated">Strefa rodzica</a>
       </div>
     </header>
     <main>
@@ -52,7 +79,7 @@
               mogło swobodnie doświadczać otaczającą je rzeczywistość.
             </p>
 
-            <a href="#" class="btn-text">Więcej &rarr;</a>
+            <a href="#popup" class="btn-text">Więcej &rarr;</a>
           </div>
           <div class="col-1-of-2">
             <div class="composition">
@@ -121,7 +148,7 @@
         </div>
       </section>
 
-      <section class="section-staff">
+      <section class="section-staff" id="section-staff">
         <div class="u-center-text u-margin-bottom-big">
           <h2 class="heading-secondary">Kadra</h2>
         </div>
@@ -222,7 +249,6 @@
           <div class="overlay"></div>
           <video class="bg-video__content" autoplay muted loop>
             <source src="./img/background-video-kids.mp4" type="video/mp4" />
-            <!-- <source src="./img/video.webm" type="video/webm" /> -->
             Your browser is not supported!
           </video>
         </div>
@@ -390,5 +416,58 @@
         </div>
       </div>
     </footer>
+
+    <div class="popup" id="popup">
+      <div class="popup__content">
+        <div class="popup__left">
+          <img
+            class="popup__img"
+            src="./img/par-1-small.jpg"
+            alt="Sala przedszkolna"
+          />
+          <img
+            class="popup__img"
+            src="./img/par-2-small.jpg"
+            alt="Sala przedszkolna"
+          />
+        </div>
+        <div class="popup__right">
+          <a href="#section-about" class="popup__close">&times;</a>
+          <h2 class="heading-secondary u-margin-bottom-small">
+            Pedagogika Janusza Korczaka
+          </h2>
+          <h3 class="heading-tertiary u-margin-bottom-small">
+            Jesteśmy zainspirowani elementami pedagogiki korczakowskiej
+          </h3>
+          <p class="popup__text">
+            zwanej antypedagogiką, gdzie pedagog/nauczyciel ma wspierać, a nie
+            „wychowywać”.
+            <br />
+            W naszej placówce dziecko jest postrzegane jako odrębna jednostka –
+            człowiek, świadomy własnych potrzeb. Idąc w ślad za słowami J.
+            Korczaka „Pozwól dzieciom błądzić i radośnie dążyć do poprawy”
+            opiekunowie i nauczyciele pokazują podopiecznym świat, poprzez
+            prezentowanie dzieciom możliwości wyboru wraz konsekwencjami, a
+            następnie kreują bezpieczne warunki, by dziecko mogło swobodnie
+            doświadczać otaczającą je rzeczywistość.
+            <br />
+            Nasze wartości to wolność, równość, samodzielność. W ciągłym dialogu
+            z podopiecznym staramy się zapewnić dzieciom tyle swobody, by czuły
+            się niezależne i odnosiły własne, wypracowanie sukcesy pod
+            niewidzialną parasolką opieki i wsparcia swojego
+            opiekuna/nauczyciela. Dzieci, które mają możliwość doświadczania,
+            eksperymentowania i samodzielnego realizowania zadań, wyzwań,
+            każdego dnia na miarę własnych umiejętności stają się dorosłymi,
+            którzy mają ugruntowane poczucie własnej wartości i mają asertywne
+            nastawienie do środowiska.
+            <br />
+            Rozwój podopiecznych wspierany jest przez specjalistów takich jak
+            psycholog, neurologopeda i pedagog specjalny. Każdy z opiekunów i
+            nauczycieli sukcesywnie podnosi swoje kwalifikacje, by móc być
+            oparciem dla dzieci i ich opiekunów.
+          </p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
