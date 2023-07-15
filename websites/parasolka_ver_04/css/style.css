@@ -1,0 +1,157 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  /* font-size: 10px; */
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  height: 80vh;
+  background-image: linear-gradient(to right bottom, rgba(22, 194, 244, 0.8), rgba(11, 96, 122, 0.8)), url(../img/hero_640.jpg);
+  background-size: cover;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 65vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 65vh, 0 100%);
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
+}
+
+.heading-primary--main {
+  display: block;
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: 0.5rem;
+  margin-bottom: 1.5rem;
+  animation-name: moveInTop;
+  animation-duration: 2s;
+}
+
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.98rem;
+  animation-name: moveInBottom;
+  animation-duration: 2s;
+}
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, #16c2f4, #0b617a);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 0.2rem;
+}
+
+.navigation-section {
+  width: 32rem;
+  height: 64rem;
+  position: absolute;
+  top: 0;
+  left: -32rem;
+  background-color: #fff;
+  transition: all 0.3s;
+  z-index: 100;
+}
+
+.active {
+  transform: translateX(32rem);
+}
+
+.navigation-top-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0rem 1rem;
+  padding: 1rem 1.5rem;
+  color: #333;
+  border-bottom: solid 1px #999;
+}
+.navigation-top-menu__left__button, .navigation-top-menu__left__button:link, .navigation-top-menu__left__button:visited {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+.navigation-top-menu__left__button__close-icon {
+  font-size: 4rem;
+  color: #16c2f4;
+}
+.navigation-top-menu__right__logo {
+  width: 10rem;
+}
+
+.header-top-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 0 1rem;
+  padding: 1rem 1.5rem;
+  border-bottom: solid 1px #fff;
+}
+.header-top-menu__left__button, .header-top-menu__left__button:link, .header-top-menu__left__button:visited {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+.header-top-menu__left__button__burger-icon {
+  font-size: 4rem;
+  color: #fff;
+}
+.header-top-menu__middle__logo {
+  width: 10rem;
+}
+.header-top-menu__right__button, .header-top-menu__right__button:link, .header-top-menu__right__button:visited {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+.header-top-menu__right__button__user-icon {
+  font-size: 4rem;
+  color: #fff;
+}
+
+.intro {
+  margin-top: 8rem;
+  text-align: center;
+}
+.about__text-box {
+  text-align: center;
+}
+@keyframes moveInTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-8rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(8rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}/*# sourceMappingURL=style.css.map */
