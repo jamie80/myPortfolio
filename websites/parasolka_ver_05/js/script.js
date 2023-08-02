@@ -49,7 +49,35 @@ wrapperAbout.addEventListener("click", (e) => {
     : "Więcej &darr;";
 });
 //BUTTON DOWN for MORE CONTENT STAFF
+//READ MORE / READ LESS button
+let more = document.querySelectorAll(".more");
 
+for (let i = 0; i < more.length; i++) {
+  more[i].addEventListener("click", function () {
+    more[i].parentNode.classList.toggle("active");
+  });
+}
+
+//BUTTON DOWN for MORE CONTENT OFFER
+const btnMoreContentOffer = document.querySelector(".btn-more-content-offer");
+const textReadMoreOffer = document.querySelector(".offer-read-more");
+const wrapperOffer = document.querySelector(".offer-wrapper");
+
+wrapperOffer.addEventListener("click", (e) => {
+  const current = e.target;
+
+  const isBtnMoreContentOffer = current.className.includes(
+    "btn-more-content-offer"
+  );
+
+  if (!isBtnMoreContentOffer) return;
+
+  const currentText = e.target.parentNode.querySelector(".offer-read-more");
+  currentText.classList.toggle("offer-read-more-open");
+  current.innerHTML = current.innerHTML.includes("Więcej")
+    ? "Mniej &uarr;"
+    : "Więcej &darr;";
+});
 //CAROUSEL
 var swiper = new Swiper(".slide-content", {
   slidesPerView: 3,
