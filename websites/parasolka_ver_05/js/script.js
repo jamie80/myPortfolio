@@ -78,9 +78,9 @@ wrapperOffer.addEventListener("click", (e) => {
     ? "Mniej &uarr;"
     : "Więcej &darr;";
 });
-//CAROUSEL
+//CAROUSEL NEWS
 var swiper = new Swiper(".slide-content", {
-  slidesPerView: 3,
+  slidesPerView: 2,
   spaceBetween: 25,
   loop: true,
   centerSlide: "true",
@@ -103,8 +103,8 @@ var swiper = new Swiper(".slide-content", {
     800: {
       slidesPerView: 2,
     },
-    1200: {
-      slidesPerView: 3,
-    },
+    // 1200: {
+    //   slidesPerView: 3,
+    // },
   },
 });
