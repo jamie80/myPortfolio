@@ -604,6 +604,13 @@ span.bold {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  text-align: center;
+}
+.gallery-item.roza {
+  text-align: left;
+}
+.gallery-item.roza a {
+  font-size: 0.8rem;
 }
 .gallery-item img {
   display: block;
