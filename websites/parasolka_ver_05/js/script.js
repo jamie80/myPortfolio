@@ -78,6 +78,32 @@ wrapperOffer.addEventListener("click", (e) => {
     ? "Mniej &uarr;"
     : "Więcej &darr;";
 });
+//BUTTON DOWN for MORE CONTENT OFFER
+const btnMoreContentPrivacyPolicy = document.querySelector(
+  ".btn-more-content-privacy-policy"
+);
+const textReadMorePrivacyPolicy = document.querySelector(
+  ".privacy-policy-read-more"
+);
+const wrapperPrivacyPolicy = document.querySelector(".privacy-policy-text");
+
+wrapperPrivacyPolicy.addEventListener("click", (e) => {
+  const current = e.target;
+
+  const isBtnMoreContentPrivacyPolicy = current.className.includes(
+    "btn-more-content-privacy-policy"
+  );
+
+  if (!isBtnMoreContentPrivacyPolicy) return;
+
+  const currentText = e.target.parentNode.querySelector(
+    ".privacy-policy-read-more"
+  );
+  currentText.classList.toggle("privacy-policy-read-more-open");
+  current.innerHTML = current.innerHTML.includes("Więcej")
+    ? "Mniej &uarr;"
+    : "Więcej &darr;";
+});
 //CAROUSEL NEWS
 var swiper = new Swiper(".slide-content", {
   slidesPerView: 2,
