@@ -110,10 +110,48 @@ span.bold {
   transform: translateY(-3px);
 }
 
-/* ............/navbar/............ *
+/* ............/index.html/............ */
+.index-container {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(rgb(22, 194, 244), rgb(11, 96, 122));
+}
+.index-cards-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 75%;
+}
+.index-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+  margin: 0 50px;
+  padding: 50px;
+  background-color: rgba(63, 63, 63, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.5);
+  position: relative;
+  transition: all 0.3s;
+}
+.index-card:hover {
+  background-color: rgba(63, 63, 63, 0.8);
+  box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.25);
+  transform: translateY(-1rem);
+}
+.index-card a::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
 
-/* desktop mode............/// */
-
+/* ............/navbar/............ */
 .navbar input[type="checkbox"],
 .navbar .hamburger-lines {
   display: none;
@@ -310,11 +348,6 @@ span.bold {
     width: 150px;
   }
 }
-@media screen and (max-width: 400px) {
-  .about-wrapper img {
-    width: 100px;
-  }
-}
 .about-read-more {
   display: block;
   opacity: 0;
@@ -365,6 +398,13 @@ span.bold {
   object-fit: cover;
   box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
 }
 
 /* .........../staff/............ */
@@ -518,11 +558,6 @@ span.bold {
 @media screen and (max-width: 600px) {
   .offer-wrapper img {
     width: 150px;
-  }
-}
-@media screen and (max-width: 400px) {
-  .offer-wrapper img {
-    width: 100px;
   }
 }
 .offer-read-more {
@@ -768,12 +803,12 @@ span.bold {
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 }
-@media screen and (max-width: 1025px) {
+@media screen and (max-width: 1140px) {
   .footer-wrapper {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 380px) {
   .footer-wrapper {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -790,6 +825,17 @@ span.bold {
 .footer-contact-information li a {
   color: #fff;
 }
+.footer-contact-information .tel {
+  pointer-events: none;
+  text-decoration: none;
+}
+@media screen and (max-width: 1025px) {
+  .footer-contact-information .tel {
+    pointer-events: visible;
+    text-decoration: underline;
+  }
+}
+
 .footer-wrapper-below {
   display: flex;
   flex-direction: column;
@@ -804,7 +850,9 @@ span.bold {
   justify-self: center;
   /* padding: 10px; */
 }
-
+.fa-solid {
+  margin-right: 10px;
+}
 /* ......../ media query /.......... */
 
 @media (max-width: 768px) {
