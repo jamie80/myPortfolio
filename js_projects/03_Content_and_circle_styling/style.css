@@ -66,9 +66,13 @@ body {
   transform-origin: top left;
 }
 
-.container.show-nav + nav li {
+.container.show-nav + .circle-container {
+  transform: rotate(-90deg);
+}
+
+.container.show-nav ~ nav li {
   transform: translateX(0);
-  transition-delay: 0.3s;
+  /* transition-delay: 0.3s; */
 }
 
 .container.show-nav .circle {
