@@ -3,6 +3,8 @@ const choices = Array.from(document.getElementsByClassName("choice-text"));
 const progressText = document.getElementById("progressText");
 const scoreText = document.getElementById("score");
 const progressBarFull = document.getElementById("progressBarFull");
+const loader = document.getElementById("loader");
+const game = document.getElementById("game");
 
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -10,32 +12,17 @@ let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
 
-let questions = [
-  {
-    question: "Jak powiedzieć wyraz 'MOTYL'?",
-    choice1: "butterfly",
-    choice2: "mouse",
-    choice3: "horse",
-    choice4: "elephant",
-    answer: 1,
-  },
-  {
-    question: "Jak powiedzieć wyraz 'PIES'?",
-    choice1: "butterfly",
-    choice2: "cat",
-    choice3: "dog",
-    choice4: "giraffe",
-    answer: 3,
-  },
-  {
-    question: "Jak powiedzieć wyraz 'ŻYRAFA'?",
-    choice1: "zebra",
-    choice2: "fish",
-    choice3: "crocodile",
-    choice4: "giraffe",
-    answer: 4,
-  },
-];
+let questions = [];
+
+fetch("questions.json")
+  .then((res) => {
+    return res.json();
+  })
+  .then((loadedQuestions) => {
+    questions = loadedQuestions;
+    startGame();
+  })
+  .catch((err) => console.error(err));
 
 //CONSTANTS
 const CORRECT_BOUNS = 10;
@@ -45,6 +32,8 @@ startGame = () => {
   questionCounter = 0;
   score = 0;
   availableQuestions = [...questions];
+  game.classList.remove("hidden");
+  loader.classList.add("hidden");
   getNewQuestion();
 };
 
@@ -101,4 +90,3 @@ getNewQuestion = () => {
     scoreText.innerText = score;
   };
 };
-startGame();
