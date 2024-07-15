@@ -1,11 +1,17 @@
 const questionNumber = document.querySelector(".question-number");
 const questionText = document.querySelector(".question-text");
 const optionContainer = document.querySelector(".option-container");
+const answersIndicatorContainer = document.querySelector(".answers-indicator");
+const homeBox = document.querySelector(".home-box");
+const quizBox = document.querySelector(".quiz-box");
+const resultBox = document.querySelector(".result-box");
 
 let questionCounter = 0;
 let currentQuestion;
 let availableQuestions = [];
 let availableOptions = [];
+let correctAnswers = 0;
+let attempt = 0;
 
 // Push the questions into availableQuestions Array
 function setAvailableQuestions() {
@@ -41,21 +47,21 @@ function getNewQuestion() {
   }
 
   optionContainer.innerHTML = "";
-  let animalDelay = 0.15;
+  let animationDelay = 0.15;
   // Create options in html
   for (let i = 0; i < optionLen; i++) {
     // Random option
     const optionIndex =
       availableOptions[Math.floor(Math.random() * availableOptions.length)];
-    // Get the position of the 'optionIndex' from the availableOptions
+    // Get the position of the 'optionIndex' from the availableOptions Array
     const index2 = availableOptions.indexOf(optionIndex);
-    // Remove the 'optionIndex' from the availableOptions, so that the option does not repeat
+    // Remove the 'optionIndex' from the availableOptions Array, so that the option does not repeat
     availableOptions.splice(index2, 1);
     const option = document.createElement("div");
     option.innerHTML = currentQuestion.options[optionIndex];
     option.id = optionIndex;
-    option.style.animationDelay = animalDelay + "s";
-    animalDelay += 0.15;
+    option.style.animationDelay = animationDelay + "s";
+    animationDelay += 0.15;
     option.className = "option";
     optionContainer.appendChild(option);
     option.setAttribute("onclick", "getResult(this)");
@@ -71,9 +77,15 @@ function getResult(element) {
   if (id === currentQuestion.answer) {
     // Set the green color to the correct option
     element.classList.add("correct");
+    // Add the indicator to correct mark
+    updateAnswerIndicator("correct");
+    correctAnswers++;
   } else {
     // Set the red color to the incorrect option
     element.classList.add("wrong");
+    // Add the indicator to wrong mark
+    updateAnswerIndicator("wrong");
+
     // If the answer is incorrect, show the correct option by adding green color to the correct option
     const optionLen = optionContainer.children.length;
     for (let i = 0; i < optionLen; i++) {
@@ -82,7 +94,7 @@ function getResult(element) {
       }
     }
   }
-
+  attempt++;
   unclickableOptions();
 }
 
@@ -94,17 +106,88 @@ function unclickableOptions() {
   }
 }
 
+function answersIndicator() {
+  answersIndicatorContainer.innerHTML = "";
+  const totalQuestion = quiz.length;
+  for (let i = 0; i < totalQuestion; i++) {
+    const indicator = document.createElement("div");
+    answersIndicatorContainer.appendChild(indicator);
+  }
+}
+
+function updateAnswerIndicator(markType) {
+  answersIndicatorContainer.children[questionCounter - 1].classList.add(
+    markType
+  );
+}
+
 function next() {
   if (questionCounter === quiz.length) {
-    console.log("Quiz over");
+    quizOver();
   } else {
     getNewQuestion();
   }
 }
 
-window.onload = function () {
+function quizOver() {
+  // Hide quizBox
+  quizBox.classList.add("hide");
+  // Show resultBox
+  resultBox.classList.remove("hide");
+  quizResult();
+}
+
+// Get the quiz results
+function quizResult() {
+  resultBox.querySelector(".total-question").innerHTML = quiz.length;
+  resultBox.querySelector(".total-attempt").innerHTML = attempt;
+  resultBox.querySelector(".total-correct").innerHTML = correctAnswers;
+  resultBox.querySelector(".total-wrong").innerHTML = attempt - correctAnswers;
+  const percentage = (correctAnswers / quiz.length) * 100;
+  resultBox.querySelector(".percentage").innerHTML =
+    percentage.toFixed(2) + "%";
+  resultBox.querySelector(".total-score").innerHTML =
+    correctAnswers + "/" + quiz.length;
+}
+
+function resetQuiz() {
+  questionCounter = 0;
+  correctAnswers = 0;
+  attempt = 0;
+}
+
+function tryAgainQuiz() {
+  // Hide the resultBox
+  resultBox.classList.add("hide");
+  // Shoe the quizBox
+  quizBox.classList.remove("hide");
+  resetQuiz();
+  startQuiz();
+}
+
+function goToHome() {
+  // Hide resultBox
+  resultBox.classList.add("hide");
+  // Show homeBox
+  homeBox.classList.remove("hide");
+  resetQuiz();
+}
+
+// #### STARTING POINT ####
+
+function startQuiz() {
+  // Hide homeBox
+  homeBox.classList.add("hide");
+  // Show quizBox
+  quizBox.classList.remove("hide");
   // First we set all questions in availableQuestions Array
   setAvailableQuestions();
   // Second we call getNewQuestion() Function
   getNewQuestion();
+  // To create indicator of answers
+  answersIndicator();
+}
+
+window.onload = function () {
+  homeBox.querySelector(".total-question").innerHTML = quiz.length;
 };

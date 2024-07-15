@@ -9,13 +9,13 @@
   </head>
   <body>
     <div class="container flex-center flex-column">
-      <div id="home" class="flex-center flex-column home-box custom-box hide">
+      <div id="home" class="flex-center flex-column home-box custom-box">
         <h1>Nauka angielskich słówek</h1>
-        <p>Ilość słówek do nauczenia: <span class="total-question">5</span></p>
-        <a class="btn" href="./">Nauka</a>
+        <p>Ilość słówek do nauczenia: <span class="total-question"></span></p>
+        <button type="button" class="btn" onclick="startQuiz()">Nauka</button>
         <a class="btn" href="../index.html">Wróć</a>
       </div>
-      <div class="quiz-box custom-box">
+      <div class="quiz-box custom-box hide">
         <div class="question-number"></div>
         <div class="question-text"></div>
         <div class="option-container"></div>
@@ -29,31 +29,33 @@
         <table>
           <tr>
             <td>Ilość pytań</td>
-            <td><span class="total-question">5</span></td>
+            <td><span class="total-question"></span></td>
           </tr>
           <tr>
             <td>Zaznaczone odpowiedzi</td>
-            <td><span class="total-attempt">4</span></td>
+            <td><span class="total-attempt"></span></td>
           </tr>
           <tr>
             <td>Poprawne</td>
-            <td><span class="total-correct">3</span></td>
+            <td><span class="total-correct"></span></td>
           </tr>
           <tr>
             <td>Niepoprawne</td>
-            <td><span class="total-wrong">1</span></td>
+            <td><span class="total-wrong"></span></td>
           </tr>
           <tr>
             <td>Procent poprawnych</td>
-            <td><span class="percentage">60%</span></td>
+            <td><span class="percentage"></span></td>
           </tr>
           <tr>
             <td>Końcowy wynik</td>
-            <td><span class="percentage">3 / 5</span></td>
+            <td><span class="total-score"></span></td>
           </tr>
         </table>
-        <button type="button" class="btn">Spróbuj ponownie</button>
-        <button type="button" class="btn">Wróć</button>
+        <button type="button" class="btn" onclick="tryAgainQuiz()">
+          Spróbuj ponownie
+        </button>
+        <button type="button" class="btn" onclick="goToHome()">Wróć</button>
       </div>
     </div>
     <script src="./question.js"></script>
