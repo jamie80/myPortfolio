@@ -37,6 +37,14 @@ function getNewQuestion() {
   const index1 = availableQuestions.indexOf(questionIndex);
   // Remove the 'questionIndex' from the availableQuestion Array, so that the question does not repeat
   availableQuestions.splice(index1, 1);
+  // #### IMAGES ####
+  // Show question img if 'img' property exists
+  if (currentQuestion.hasOwnProperty("img")) {
+    const img = document.createElement("img");
+    img.src = currentQuestion.img;
+    img.classList.add("question-image");
+    questionText.appendChild(img);
+  }
 
   // Set options
   // Get the length of options

@@ -132,6 +132,15 @@
   background-position: center;
 }
 
+/* QUIZ-BOX IMAGE */
+.question-image {
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  animation: slideInLeft 0.5s ease forwards;
+}
+
 /* RESULT BOX */
 .result-box {
   text-align: center;
