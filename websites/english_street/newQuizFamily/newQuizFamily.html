@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>nexter &mdash; nauka angielskiego</title>
+    <link rel="stylesheet" href="../challenge/app.css" />
+    <link rel="stylesheet" href="../newQuiz/style.css" />
+  </head>
+  <body>
+    <div class="container flex-center flex-column">
+      <div id="home" class="flex-center flex-column home-box custom-box">
+        <img src="../img/house-6.webP" alt="Toys" />
+        <h1>Family</h1>
+        <p>Ilość słówek do nauczenia: <span class="total-question"></span></p>
+        <button type="button" class="btn" onclick="startQuiz()">Nauka</button>
+        <a class="btn" href="../index.html">Wróć</a>
+      </div>
+      <div class="quiz-box custom-box hide">
+        <div class="question-number"></div>
+        <div class="question-text"></div>
+        <div class="option-container"></div>
+        <div class="next-question-btn">
+          <button type="button" class="btn" onclick="next()">Dalej</button>
+        </div>
+        <div class="answers-indicator"></div>
+      </div>
+      <div class="result-box custom-box flex-center flex-column hide">
+        <h1>Wyniki</h1>
+        <table>
+          <tr>
+            <td>Ilość pytań</td>
+            <td><span class="total-question"></span></td>
+          </tr>
+          <tr>
+            <td>Zaznaczone odpowiedzi</td>
+            <td><span class="total-attempt"></span></td>
+          </tr>
+          <tr>
+            <td>Poprawne</td>
+            <td><span class="total-correct"></span></td>
+          </tr>
+          <tr>
+            <td>Niepoprawne</td>
+            <td><span class="total-wrong"></span></td>
+          </tr>
+          <tr>
+            <td>Procent poprawnych</td>
+            <td><span class="percentage"></span></td>
+          </tr>
+          <tr>
+            <td>Końcowy wynik</td>
+            <td><span class="total-score"></span></td>
+          </tr>
+        </table>
+        <button type="button" class="btn" onclick="tryAgainQuiz()">
+          Spróbuj ponownie
+        </button>
+        <button type="button" class="btn" onclick="goToHome()">Wróć</button>
+      </div>
+    </div>
+    <script src="./questionFamily.js"></script>
+    <script src="../newQuiz/app.js"></script>
+  </body>
+</html>
