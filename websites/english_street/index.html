@@ -27,7 +27,10 @@
       />
       <h3 class="heading-3">Za darmo</h3>
       <h1 class="heading-1">Nauka angielskich słówek dla dzieci</h1>
-      <button class="btn header__btn">Wybierz temat</button>
+
+      <button onclick="location.href='#topics' " class="btn header__btn">
+        Wybierz temat
+      </button>
       <div class="header__seenon-text">Nasi sponsorzy</div>
       <div class="header__seenon-logos">
         <img src="./img/logo-bbbc.png" alt="Seen on logo 1" />
@@ -41,20 +44,35 @@
       <h3 class="heading-3">Nowości</h3>
 
       <div class="realtors__list">
-        <img src="./img/realtor-1.webP" alt="Animals" class="realtors__img" />
-        <div class="realtors__details">
-          <h4 class="heading-4 heading4--light">Animals</h4>
-          <p class="realtors__sold">Poziom I</p>
-        </div>
-
-        <img src="./img/realtor-2.webP" alt="Toys" class="realtors__img" />
-        <div class="realtors__details">
+        <img
+          src="./img/realtor-2.webP"
+          alt="Toys"
+          class="realtors__img"
+          onclick="location.href='#topic-toys'"
+        />
+        <div class="realtors__details" onclick="location.href='#topic-toys'">
           <h4 class="heading-4 heading4--light">Toys</h4>
           <p class="realtors__sold">Poziom I</p>
         </div>
 
-        <img src="./img/realtor-3.webP" alt="Food" class="realtors__img" />
-        <div class="realtors__details">
+        <img
+          src="./img/realtor-1.webP"
+          alt="Animals"
+          class="realtors__img"
+          onclick="location.href='#topic-animals'"
+        />
+        <div class="realtors__details" onclick="location.href='#topic-animals'">
+          <h4 class="heading-4 heading4--light">Animals</h4>
+          <p class="realtors__sold">Poziom I</p>
+        </div>
+
+        <img
+          src="./img/realtor-3.webP"
+          alt="Food"
+          class="realtors__img"
+          onclick="location.href='#topic-food'"
+        />
+        <div class="realtors__details" onclick="location.href='#topic-food'">
           <h4 class="heading-4 heading4--light">Food</h4>
           <p class="realtors__sold">Poziom I</p>
         </div>
@@ -70,7 +88,7 @@
         </svg>
         <h4 class="heading-4 heading-4--dark">Bez abonamentu</h4>
         <p class="feature__text">
-          Korzystając z naszej strony nie musisz wykupować żadnych płatnych
+          Korzystając z naszej strony nie musisz wykupywać żadnych płatnych
           subskrypcji.
         </p>
       </div>
@@ -152,7 +170,12 @@
 
     <section class="homes">
       <div class="home">
-        <img src="./img/house-1.webP" alt="Toys" class="home__img" />
+        <img
+          src="./img/house-1.webP"
+          alt="Toys"
+          class="home__img"
+          id="topic-toys"
+        />
         <svg class="home__like">
           <use xlink:href="./img/sprite.svg#icon-heart-full"></use>
         </svg>
@@ -187,7 +210,12 @@
       </div>
 
       <div class="home">
-        <img src="./img/house-2.webP" alt="Animals" class="home__img" />
+        <img
+          src="./img/house-2.webP"
+          alt="Animals"
+          class="home__img"
+          id="topic-animals"
+        />
         <svg class="home__like">
           <use xlink:href="./img/sprite.svg#icon-heart-full"></use>
         </svg>
@@ -222,7 +250,12 @@
       </div>
 
       <div class="home">
-        <img src="./img/house-3.webP" alt="Food" class="home__img" />
+        <img
+          src="./img/house-3.webP"
+          alt="Food"
+          class="home__img"
+          id="topic-food"
+        />
         <svg class="home__like">
           <use xlink:href="./img/sprite.svg#icon-heart-full"></use>
         </svg>
@@ -257,7 +290,12 @@
       </div>
 
       <div class="home">
-        <img src="./img/house-4.webP" alt="Fruit" class="home__img" />
+        <img
+          src="./img/house-4.webP"
+          alt="Fruit"
+          class="home__img"
+          id="topic-fruit"
+        />
         <svg class="home__like">
           <use xlink:href="./img/sprite.svg#icon-heart-full"></use>
         </svg>
@@ -292,7 +330,12 @@
       </div>
 
       <div class="home">
-        <img src="./img/house-5.webP" alt="Transport" class="home__img" />
+        <img
+          src="./img/house-5.webP"
+          alt="Transport"
+          class="home__img"
+          id="topic-transport"
+        />
         <svg class="home__like">
           <use xlink:href="./img/sprite.svg#icon-heart-full"></use>
         </svg>
@@ -327,7 +370,12 @@
       </div>
 
       <div class="home">
-        <img src="./img/house-6.webP" alt="House 6" class="home__img" />
+        <img
+          src="./img/house-6.webP"
+          alt="House 6"
+          class="home__img"
+          id="topic-family"
+        />
         <svg class="home__like">
           <use xlink:href="./img/sprite.svg#icon-heart-full"></use>
         </svg>

@@ -9,6 +9,7 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 @media only screen and (max-width: 75em) {
   html {
@@ -262,6 +263,10 @@ body {
   width: 8rem;
   border-radius: 50%;
   display: block;
+  cursor: pointer;
+}
+.realtors__details {
+  cursor: pointer;
 }
 .realtors__sold {
   text-transform: uppercase;
@@ -376,6 +381,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   row-gap: 3.5rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.29);
 }
 .home__img {
   width: 100%;
