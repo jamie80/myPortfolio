@@ -1,0 +1,26 @@
+[
+  {
+    "question": "Jak powiedzieć wyraz 'MOTYL'?",
+    "choice1": "butterfly",
+    "choice2": "mouse",
+    "choice3": "horse",
+    "choice4": "elephant",
+    "answer": 1
+  },
+  {
+    "question": "Jak powiedzieć wyraz 'PIES'?",
+    "choice1": "butterfly",
+    "choice2": "cat",
+    "choice3": "dog",
+    "choice4": "giraffe",
+    "answer": 3
+  },
+  {
+    "question": "Jak powiedzieć wyraz 'ŻYRAFA'?",
+    "choice1": "zebra",
+    "choice2": "fish",
+    "choice3": "crocodile",
+    "choice4": "giraffe",
+    "answer": 4
+  }
+]
