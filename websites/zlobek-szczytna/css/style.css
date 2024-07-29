@@ -215,10 +215,10 @@ blockquote {
 
 .logo-bip {
   margin-top: 10px;
-  width: 75px;
+  width: 100px;
   cursor: pointer;
   transition: width 0.1s ease;
 }
 .logo-bip:hover {
-  width: 80px;
+  width: 110px;
 }
