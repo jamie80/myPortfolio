@@ -1,0 +1,108 @@
+@media screen and (max-width: 1050px) {
+	
+}
+
+@media screen and (max-width: 768px) {
+	/*WARTOŚCI WSPÓLNE*/
+	blockquote {
+		font-size: 1em;
+		padding-bottom: 50px;
+	}
+
+	.srodkuj {
+		width: 95%;
+	}
+	.dzial_naglowek {
+		line-height: 45px;
+		margin: 5% 0;
+	}
+	.dzial_opis {
+		line-height: 25px;
+	}
+	/*---------------*/
+	
+	/*MENU*/
+	#kon_menu {
+		top: -220px;
+		padding: 0;
+	}
+	.linki_menu {
+		width: 100%;
+	}
+	.linki_menu li {
+		width: 100%;
+		float: none;
+		padding: 10px 0;
+	}
+	.pokaz_menu {
+		display: block;
+		padding: 15px;
+		background: rgb(245,245,245);
+		text-align: center;
+		color: rgb(38,38,38);
+		cursor: pointer;
+	}
+	/*---------------*/
+	
+	/*TOP STRONY*/
+	#top_strony {
+		height: auto;
+		background: url(../images/mobile_mis_wys750.jpg) no-repeat center;
+	}
+	#top_strony h1 {
+		margin-top: 25%;
+		font-size: 2.5em;
+	}
+	#top_strony h2 {
+		font-size: 1.5em;
+		line-height: 30px;
+	}
+	#top_strony p {
+		margin-top: 35%;
+	}
+	#top_strony p a {
+		padding: 20px 60px;
+	}
+	/*---------------*/
+	
+	/*O NAS*/
+	#kon_o_nas {
+		height: auto;
+	}
+	
+	.gazeta {
+         column-count: 1;
+	}
+	/*---------------*/
+	
+	/*KADRA*/
+	#kon_kadra {
+		height: auto;
+	}
+	.dyrektor, .pracownicy {
+		width: 96%;
+		float: none;
+		margin-right: 0;
+		margin-bottom: 3%;
+		text-align: center;
+	}
+	
+	/*---------------*/
+	
+	/*DOJAZD*/
+	#mapa {
+		height: 100%;
+	}
+	/*---------------*/
+	
+	/*DOKUMENTY*/
+	#kon_dokumenty {
+		height: auto;
+	}
+	/*---------------*/
+
+	/*STOPKA*/
+	#kon_stopka {
+		padding: 3% 0;
+	}
+}

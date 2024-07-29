@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Żłobek Publiczny w Szczytnej</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/style_mobile.css" rel="stylesheet" />
+    <link href="css/style_fonts.css" rel="stylesheet" />
+    <script src="js/jquery.js"></script>
+    <script src="js/nawigacja.js"></script>
+  </head>
+  <body>
+    <nav id="kon_menu">
+      <ul class="linki_menu">
+        <li><a href="#" class="top_strony_link">Główna</a></li>
+        <li><a href="#" class="kon_o_nas_link">O nas</a></li>
+        <li><a href="#" class="kon_kadra_link">Kadra</a></li>
+        <li><a href="#" class="mapa_link">Dojazd</a></li>
+        <li><a href="#" class="kon_dokumenty_link">Dokumenty</a></li>
+      </ul>
+      <p class="pokaz_menu">menu</p>
+    </nav>
+    <header id="top_strony">
+      <h1>Żłobek Publiczny w&nbsp;Szczytnej</h1>
+      <blockquote>
+        Sposób, w jaki mówimy do naszych dzieci, staje się ich wewnętrznym
+        głosem (Peggy O’Mara)
+      </blockquote>
+    </header>
+    <section id="kon_o_nas">
+      <div class="srodkuj">
+        <h1 class="dzial_naglowek">O NAS</h1>
+        <div class="gazeta">
+          <ul>
+            <li>
+              <span class="pogrubienie">Żłobek Publiczny w Szczytnej</span>
+              rozpoczął działalność 2 stycznia 2019 roku.
+            </li>
+            <li>
+              Jego utworzenie zostało dofinansowane z
+              <span class="pogrubienie"
+                >Resortowego Programu Rozwoju Instytucji Opieki nad dziećmi w
+                wieku do lat 3 MALUCH+ 2018.</span
+              >
+            </li>
+            <li>
+              W okresie od 1 stycznia 2019 do 31 grudnia 2020 w Złobku
+              realizowany był projekt dofinansowany w ramach
+              <span class="pogrubienie"
+                >Regionalnego Programu Operacyjnego Wolewództwa
+                Dolnośląskiego</span
+              >
+              współfinansowany ze środków Unii Europejskiej w ramach
+              <span class="pogrubienie"
+                >Europejskiego Funduszu Społecznego.</span
+              >
+            </li>
+            <li>
+              <span class="pogrubienie">Nazwa Programu Operacyjnego:</span>
+              Regionalny Program Operacyjny Województwa Dolnośląskiego na lata
+              2014-2020
+            </li>
+            <li>
+              <span class="pogrubienie">Numer i nazwa Osi priorytetowej:</span>
+              8 Rynek Pracy
+            </li>
+            <li>
+              <span class="pogrubienie">Numer i Nazwa Działania:</span> 8.4.
+              Godzenie życia zawodowego i prywatnego
+            </li>
+            <li>
+              <span class="pogrubienie">Numer i nazwa Poddziałania:</span> 8.4.1
+              Godzenie życia zawodowego i prywatnego- konkursy horyzontalne
+            </li>
+            <li>
+              <span class="pogrubienie">Tytuł Projektu:</span> "Nowe Miejsca
+              Opieki nad dziecmi do lat 3 w Gminie Szczytna"
+            </li>
+            <li>
+              <span class="pogrubienie">Numer Projektu:</span>
+              RPDS.08.04.01-IP.02-02-290/18
+            </li>
+            <li>
+              Żłobek dysponuje 23 miejscami dla dzieci w wieku od 20 tygodni do
+              3 lat.
+            </li>
+            <li>Godziny otwarcia: 6:00 - 16:00</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section id="kon_kadra">
+      <div class="srodkuj">
+        <h1 class="dzial_naglowek">KADRA</h1>
+        <article class="dyrektor">
+          <h2>Dyrektor</h2>
+          <p>Alicja Paszkiewicz</p>
+          <p>tel. 609 468 181</p>
+          <h2>Główna księgowa</h2>
+          <p>Agnieszka Ryznar</p>
+        </article>
+        <div class="pracownicy">
+          <article>
+            <h2>Kadra opiekuńcza</h2>
+            <p>Sylwia Iwanowicz</p>
+            <p>Elżbieta Kocyła</p>
+            <p>Natalia Koterba</p>
+            <p>Snizhana Mykhailynyn</p>
+            <h2>Pielęgniarz</h2>
+            <p>Kamil Kubabski</p>
+            <br />
+            <h2>Kadra pomocnicza</h2>
+            <p>Krystyna Wieńska</p>
+            <p>Wiesław Pawlak</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section id="mapa"></section>
+    <script>
+      function initMap() {
+        var wspolrzedne = new google.maps.LatLng(
+          50.42055249721414,
+          16.431360102997523
+        );
+        var opcjeMapy = {
+          zoom: 18,
+          center: wspolrzedne,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+        };
+        var mapa = new google.maps.Map(
+          document.getElementById("mapa"),
+          opcjeMapy
+        );
+        var dymek_zawartosc =
+          '<div id="tresc_mapa">' +
+          "<h3>Żłobek Publiczny w Szczytnej</h3>" +
+          "<p>ul. Wolności 80</p>" +
+          "<p>57-330 Szczytna</p>" +
+          "<p>tel. 609 468 181</p>" +
+          "<p>e-mail: zlobek_szczytna@wp.pl</p>" +
+          "</div>";
+        var dymek = new google.maps.InfoWindow({ content: dymek_zawartosc });
+        dymek.setPosition(wspolrzedne);
+        dymek.open(mapa);
+      }
+    </script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUX3ZnQ8GxRF3g8m1JV8uX7xQ1e87wuRI&callback=initMap"
+      async
+      defer
+    ></script>
+    <section id="kon_dokumenty">
+      <div class="srodkuj">
+        <h1 class="dzial_naglowek">DOKUMENTY</h1>
+        <div class="gazeta">
+          <ul>
+            <li class="gazeta tytul_listy">Statutowe</li>
+            <li>
+              <a
+                href="documents/statutowe/uchwala_nr_xxxix-227-18.pdf"
+                target="_blank"
+                >Uchwała Nr XXXIX/227/18 Rady Miejskiej w Szczytnej z dnia 30
+                sierpnia 2018 r. w sprawie utworzenia Żłobka Publicznego w
+                Szczytnej oraz nadania mu statutu</a
+              >
+            </li>
+            <li>
+              <a
+                href="documents/statutowe/uchwala_nr_xxiv-167-20.pdf"
+                target="_blank"
+                >Uchwała Nr XXIV/167/20 Rady Miejskiej W Szczytnej z dnia 3
+                grudnia 2020 r. w sprawie zmiany statutu Żłobka Publicznego w
+                Szczytnej</a
+              >
+            </li>
+            <li>
+              <a
+                href="documents/statutowe/uchwala_nr_xxiv-166-20.pdf"
+                target="_blank"
+                >Uchwała Nr XXIV/166/20 Rady Miejskiej W Szczytnej z dnia 3
+                grudnia 2020 r. w sprawie ustalenia wysokości opłaty za pobyt
+                dziecka w żłobku utworzonym przez Gminę Szczytna</a
+              >
+            </li>
+            <li>
+              <a
+                href="documents/statutowe/urm_XXXVII-232-21.pdf"
+                target="_blank"
+                >Uchwała Nr XXXVII/232/21 Rady Miejskiej W Szczytnej z dnia 2
+                grudnia 2021 r. w sprawie ustalenia wysokości opłaty za pobyt
+                dziecka w żłobku utworzonym przez Gminę Szczytna</a
+              >
+            </li>
+            <li>
+              <a
+                href="documents/statutowe/regulamin_organizacyjny.pdf"
+                target="_blank"
+                >Regulamin Organizacyjny Żłobka</a
+              >
+            </li>
+            <li class="gazeta tytul_listy">Sprawozdania finansowe</li>
+            <li>
+              <a
+                href="documents/sprawozdania_finansowe/sprawozdanie_finansowe_2019.pdf"
+                target="_blank"
+                >Sprawozdanie finansowe - 2019.</a
+              >
+            </li>
+            <li>
+              <a
+                href="documents/sprawozdania_finansowe/sprawozdanie_finansowe_2020.pdf"
+                target="_blank"
+                >Sprawozdanie finansowe - 2020.</a
+              >
+            </li>
+            <li>
+              <a
+                href="documents/sprawozdania_finansowe/sprawozdanie_finansowe_2021.pdf"
+                target="_blank"
+                >Sprawozdanie finansowe - 2021.</a
+              >
+            </li>
+            <li>
+              <a
+                href="documents/sprawozdania_finansowe/sprawozdanie_finansowe_2022.pdf"
+                target="_blank"
+                >Sprawozdanie finansowe - 2022.</a
+              >
+            </li>
+            <li>
+              <a
+                href="documents/sprawozdania_finansowe/sprawozdanie_finansowe_2023.pdf"
+                target="_blank"
+                >Sprawozdanie finansowe - 2023.</a
+              >
+            </li>
+            <li class="gazeta tytul_listy">Rekrutacja</li>
+            <li>
+              <a
+                href="documents/rekrutacja/regulamin_rekrutacji.pdf"
+                target="_blank"
+                >Regulamin rekrutacji</a
+              >
+            </li>
+            <li>
+              <a href="documents/rekrutacja/karta_zapisu.pdf" target="_blank"
+                >Karta zapisu dziecka do żłobka</a
+              >
+            </li>
+            <li class="gazeta tytul_listy" id="wyjatek">Covid-19</li>
+            <li>Wewnętrzny regulamin bezpieczeństwa</li>
+            <li>
+              <a
+                href="documents/statutowe/oswiadczenie_rodzica.pdf"
+                target="_blank"
+                >Oświadczenie rodzica/opiekuna prawnego</a
+              >
+            </li>
+            <li class="gazeta tytul_listy">Dostępność</li>
+            <li>
+              <a
+                href="documents/dostepnosc/deklaracja_dostepnosci.pdf"
+                target="_blank"
+                >Deklaracja dostępności architektonicznej i
+                informacyjno-komunikacyjnej</a
+              >
+            </li>
+            <li>
+              <a
+                href="documents/dostepnosc/raport_o_stanie_dostepnosci.pdf"
+                target="_blank"
+                >Raport o stanie dostępności podmiotu publicznego</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section id="logo">
+      <img class="zdjecie_logo" src="images/logo1.jpg" alt="loga instytucji" />
+    </section>
+    <footer id="kon_stopka">
+      <p>Żłobek Publiczny w Szczytnej</p>
+      <p>ul. Wolności 80</p>
+      <p>57-330 Szczytna</p>
+      <p>tel. 609 468 181</p>
+      <p>e-mail: zlobek_szczytna@wp.pl</p>
+      <p>e-doręczenia: AE:PL-66891-52327-SIBCG-31</p>
+    </footer>
+  </body>
+</html>
