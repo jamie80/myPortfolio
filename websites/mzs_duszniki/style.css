@@ -6,8 +6,31 @@
   box-sizing: border-box;
 }
 
+:root {
+  --body-bg-color: #333;
+}
+
 body {
   font-family: "roboto", sans-serif;
+  background-color: var(--body-bg-color);
+}
+
+/* *** *** I N D E X *** *** */
+
+.mzs-title,
+.mzs-subtitle {
+  text-align: center;
+  margin: 5px 0;
+  color: #e6e6e6;
+  font-weight: bold;
+}
+.mzs-title {
+  text-transform: uppercase;
+  margin-top: 30px;
+  font-size: 30px;
+}
+.mzs-subtitle {
+  font-size: 25px;
 }
 
 .school-title {
@@ -16,15 +39,19 @@ body {
   color: #e6e6e6;
   z-index: 100;
 }
+
 .item-3 .school-title {
   line-height: 20px;
 }
-.container {
-  height: 100vh;
+.main-container {
+  /* height: 100vh;
+  width: 100vw; */
   background-color: #333;
+}
+.container {
+  margin-top: 25px;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .item {
@@ -46,6 +73,7 @@ body {
 .item:hover {
   transform: scale(1.1);
   box-shadow: 24px 24px 24px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
 }
 .item::after {
   content: "";
@@ -75,9 +103,19 @@ body {
     width: 200px;
     height: 200px;
     margin: 20px;
+    padding: 8px 25px;
   }
   .school-title {
-    font-size: 16px;
+    font-size: 14px;
+  }
+  .item-3 .school-title {
+    line-height: 14px;
+  }
+  .mzs-title {
+    font-size: 20px;
+  }
+  .mzs-subtitle {
+    font-size: 18px;
   }
 }
 
@@ -85,12 +123,14 @@ body {
   .container {
     flex-direction: column;
     align-items: center;
+    margin-top: 10px;
   }
-  /* .item {
-    width: 250px;
-    height: 250px;
-    margin: 15px;
-    font-size: 14px;
-    border: 3px solid #333;
-  } */
+  .item {
+    margin: 10px;
+  }
+  .mzs-title {
+    margin-top: 10px;
+  }
 }
+
+/* *** *** S P *** *** */
