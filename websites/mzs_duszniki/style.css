@@ -5,16 +5,39 @@
 }
 
 :root {
-  --body-bg-color: #333;
+  --nav-main-color: rgba(0, 0, 0, 0.45);
 }
 
 body {
+  overflow: auto;
   font-family: "Lato", sans-serif;
-  background-color: var(--body-bg-color);
 }
 
 /* *** *** I N D E X *** *** */
+.index-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.index-main-container-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.index-logo-top {
+  padding-top: 10px;
+  width: 250px;
+}
+@media (max-width: 1050px) {
+  .index-logo-top {
+    width: 175px;
+  }
+}
 
+.index-logo-top img {
+  width: 100%;
+}
 .index-mzs-title,
 .index-mzs-subtitle {
   text-align: center;
@@ -24,7 +47,7 @@ body {
 }
 .index-mzs-title {
   text-transform: uppercase;
-  margin-top: 30px;
+  padding-top: 10px;
   font-size: 48px;
 }
 .index-mzs-subtitle {
@@ -41,15 +64,28 @@ body {
 .index-item-3 .index-school-title {
   line-height: 20px;
 }
-.index-main-container {
-  /* height: 100vh;
-  width: 100vw; */
-  background-color: #333;
-}
+
 .index-container {
   margin-top: 25px;
   display: flex;
   justify-content: center;
+}
+.index-container-logo {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.index-container-logo img {
+  width: 75px;
+}
+@media (max-width: 1050px) {
+  .index-container-logo img {
+    width: 50px;
+  }
+  .index-container-logo {
+    right: 5px;
+    top: 5px;
+  }
 }
 
 .index-item {
@@ -94,7 +130,7 @@ body {
 }
 .index-item-3 {
   background-image: url("./img/silownia.png");
-  background-position: center;
+  background-position: calc(70%);
 }
 @media (max-width: 1050px) {
   .index-item {
@@ -110,10 +146,10 @@ body {
     line-height: 14px;
   }
   .index-mzs-title {
-    font-size: 20px;
+    font-size: 24px;
   }
   .index-mzs-subtitle {
-    font-size: 18px;
+    font-size: 20px;
   }
 }
 
@@ -158,7 +194,7 @@ body {
 
 .header .logo img {
   padding: 10px 0;
-  width: 100px;
+  width: 60px;
   vertical-align: middle;
 }
 
@@ -184,11 +220,14 @@ body {
 
 .header .menu a {
   text-decoration: none;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   font-size: 16px;
   color: #ffffff;
   line-height: 1.5;
   display: block;
+}
+.header .menu a::first-letter {
+  text-transform: uppercase;
 }
 
 .header .menu > ul > li > a {
@@ -218,7 +257,8 @@ body {
   left: 0;
   width: 230px;
   padding: 15px 0;
-  background-color: rgb(63, 87, 198);
+  background-color: var(--nav-main-color);
+  /* backdrop-filter: blur(80px); */
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   z-index: 1;
   transform-origin: top;
@@ -230,6 +270,7 @@ body {
 .header .menu .sub-menu-right {
   left: 100%;
   top: 0;
+  /* background-color: var(--nav-main-color); */
 }
 
 .header .menu .sub-menu-left {
@@ -301,7 +342,8 @@ body {
     top: 0;
     width: 320px;
     height: 100%;
-    background-color: rgb(63, 87, 198);
+    /* background-color: var(--nav-main-color); */
+    backdrop-filter: blur(80px);
     padding: 15px 30px 30px;
     overflow-y: auto;
     z-index: 1;
@@ -395,10 +437,10 @@ body {
     padding: 12px 0 12px 15px;
   }
   .header .menu .sub-menu .sub-menu a {
-    padding-left: 30px;
+    padding-left: 45px;
   }
   .header .menu .sub-menu .sub-menu .sub-menu a {
-    padding-left: 45px;
+    padding-left: 60px;
   }
   .header .menu .sub-menu span {
     background-image: none;
@@ -435,8 +477,11 @@ body {
 /* ** *** **** ***** SP ***** **** *** ** */
 
 /* A L L     M A I N S*/
+.index-main-container {
+  background: url("./img/background_1280x1708.jpg");
+}
 .sp-main {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
     url("../img/ai-generated-8979065_1280.jpg");
 }
 .sms-main {
@@ -447,14 +492,16 @@ body {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url("./img/ai-generated-8177911_1280.jpg");
 }
+.index-main-container,
 .sp-main,
 .sms-main,
 .lo-main {
   min-height: 100vh;
+  /* height: 100%; */
   background-size: cover;
   background-position: center;
   background-position-y: top;
-  height: 100vh;
+  /* height: 100vh; */
 }
 .main-container {
   display: flex;
@@ -469,6 +516,7 @@ body {
   color: #f1f1f1;
   text-align: center;
   height: 100%;
+  min-height: 100vh;
 }
 .main-title {
   font-size: 48px;
@@ -501,5 +549,27 @@ body {
 @media (max-width: 601px) {
   .logo-duszniki {
     width: 200px;
+  }
+}
+
+/* P R O J E C T S*/
+.main-container-projects {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 150px 50px;
+  color: #f1f1f1;
+  height: 100%;
+}
+.projects-h1 {
+  margin-top: 100px;
+  padding-bottom: 25px;
+  font-size: 48px;
+}
+.projects-p {
+  text-align: justify;
+}
+@media (max-width: 991px) {
+  .projects-p {
+    text-align: left;
   }
 }
