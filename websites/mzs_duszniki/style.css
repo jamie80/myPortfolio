@@ -573,3 +573,24 @@ body {
     text-align: left;
   }
 }
+
+/* R E K R U T A C J A */
+.unordered-list {
+  list-style: none;
+}
+.unordered-list-item a:link,
+a:visited {
+  background-color: white;
+  color: black;
+  border: 2px solid green;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.unordered-list-item a:hover,
+a:active {
+  background-color: green;
+  color: white;
+}
