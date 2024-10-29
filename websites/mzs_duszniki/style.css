@@ -88,7 +88,8 @@ body {
   }
 }
 
-.index-item {
+.index-container a:link,
+.index-container a:visited {
   position: relative;
   display: flex;
   justify-content: center;
@@ -104,7 +105,8 @@ body {
   box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.6);
   transition: all 0.15s ease-in-out;
 }
-.index-item:hover {
+.index-container a:hover,
+.index-container a:active {
   transform: scale(1.1);
   box-shadow: 24px 24px 24px rgba(0, 0, 0, 0.3);
   font-weight: bold;
@@ -218,13 +220,18 @@ body {
   position: relative;
 }
 
-.header .menu a {
+.header .menu a:link,
+.header .menu a:visited {
   text-decoration: none;
   /* text-transform: capitalize; */
   font-size: 16px;
-  color: #ffffff;
+  color: #fff;
   line-height: 1.5;
   display: block;
+}
+.header .menu a:hover,
+.header .menu a:active {
+  background-color: transparent;
 }
 .header .menu a::first-letter {
   text-transform: uppercase;
@@ -562,6 +569,7 @@ body {
 }
 .projects-h1 {
   margin-top: 100px;
+  padding-left: 20px;
   padding-bottom: 25px;
   font-size: 48px;
 }
@@ -577,20 +585,45 @@ body {
 /* R E K R U T A C J A */
 .unordered-list {
   list-style: none;
-}
-.unordered-list-item a:link,
-a:visited {
-  background-color: white;
-  color: black;
-  border: 2px solid green;
+  /* background-color: rgba(0, 0, 0, 0.3);
+  display: inline-block;
   padding: 10px 20px;
-  text-align: center;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.1); */
+}
+
+.unordered-list-item a:link,
+.unordered-list-item a:visited {
+  color: #fff;
+  padding: 10px 20px;
   text-decoration: none;
   display: inline-block;
+  transition: all 0.1s linear;
 }
 
 .unordered-list-item a:hover,
-a:active {
-  background-color: green;
-  color: white;
+.unordered-list-item a:active {
+  transform: scale(1.05);
+}
+
+.unordered-list-item a::after {
+  content: "";
+  border-bottom: 1px solid white;
+  display: block;
+  transform: scaleX(0);
+  transform-origin: 0% 50%;
+  transition: all 0.3s linear;
+}
+
+.unordered-list-item a:hover::after {
+  transform: scaleX(1);
+}
+
+.background {
+  background-color: rgba(0, 0, 0, 0.3);
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.1);
+  line-height: 1.5;
 }
