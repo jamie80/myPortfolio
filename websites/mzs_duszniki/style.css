@@ -573,59 +573,62 @@ body {
   height: 100vh;
 }
 
-.projects-h1-2 {
+.section-h1 {
   margin-top: 20px;
   font-size: 98px;
   text-shadow: 0 0 10px #000000;
 }
-.projects-h2-2 {
+.section-h2 {
   font-size: 35px;
   margin-bottom: 35px;
   font-weight: bold;
   color: #0e1e4d;
 }
-.projects-h3-2 {
+.section-h3 {
   font-size: 24px;
   margin-bottom: 20px;
   color: #0e1e4d;
 }
-.projects-p-2 {
+.section-p {
   color: #0e1e4d;
   font-size: 16px;
   margin-bottom: 10px;
   line-height: 28px;
 }
-.projects-li-2 {
+.section-li {
   color: #0e1e4d;
   font-size: 16px;
   margin-bottom: 10px;
   line-height: 28px;
 }
 
-.project-section {
+.section {
   min-height: 600px;
-  display: flex;
-}
-.project-section-main-container {
   max-width: 1170px;
   margin: 0 auto;
-  display: flex;
-  column-gap: 25px;
   padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.project-section-content-container {
+
+.section-bottom {
+  display: flex;
+  column-gap: 50px;
+}
+.section-bottom-content {
   flex: 1 1 50%;
-  height: 100%;
 }
-.project-section-image-container {
+.section-bottom-image {
   flex: 1 1 50%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100%;
+  align-items: flex-start;
 }
-.project-section-image {
-  height: 100%;
+.section-bottom-image img {
+  max-width: 100%;
+  border-radius: 5px;
 }
 .triple-container {
   display: flex;
@@ -637,7 +640,7 @@ body {
 .triple-content img {
   max-width: 100%;
   border-radius: 10px;
-  transition: all 0.3s linear;
+  transition: all 0.15s linear;
 }
 .triple-content img:hover {
   transform: scale(1.1);
@@ -660,29 +663,30 @@ body {
 }
 
 @media (max-width: 980px) {
-  .project-section-main-container {
+  .section-bottom {
     flex-direction: column;
+    row-gap: 30px;
   }
-  .project-section-image-container {
+  .section-bottom-image {
     order: 2;
   }
-  .project-section-content-container {
+  .section-bottom-content {
     order: 1;
   }
-  .projects-h1-2 {
+  .section-h1 {
     font-size: 58px;
   }
 }
 @media (max-width: 630px) {
-  .projects-h1-2 {
+  .section-h1 {
     font-size: 38px;
   }
-  .projects-image {
-    width: 350px;
+  .image {
+    max-width: 350px;
   }
 }
 @media (max-width: 460px) {
-  .projects-h1-2 {
+  .section-h1 {
     font-size: 28px;
   }
 }
