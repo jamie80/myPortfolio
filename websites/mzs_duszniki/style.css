@@ -13,171 +13,6 @@ body {
   font-family: "Lato", sans-serif;
 }
 
-/* *** *** I N D E X *** *** */
-.index-main-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.index-main-container-top {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.index-logo-top {
-  padding-top: 10px;
-  width: 250px;
-}
-@media (max-width: 1050px) {
-  .index-logo-top {
-    width: 175px;
-  }
-}
-
-.index-logo-top img {
-  width: 100%;
-}
-.index-mzs-title,
-.index-mzs-subtitle {
-  text-align: center;
-  margin: 5px 0;
-  color: #e6e6e6;
-  font-weight: bold;
-}
-.index-mzs-title {
-  text-transform: uppercase;
-  padding-top: 10px;
-  font-size: 48px;
-}
-.index-mzs-subtitle {
-  font-size: 30px;
-}
-
-.index-school-title {
-  text-transform: uppercase;
-  font-size: 20px;
-  color: #e6e6e6;
-  z-index: 100;
-}
-
-.index-item-3 .index-school-title {
-  line-height: 20px;
-}
-
-.index-container {
-  margin-top: 25px;
-  display: flex;
-  justify-content: center;
-}
-.index-container-logo {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
-.index-container-logo img {
-  width: 75px;
-}
-@media (max-width: 1050px) {
-  .index-container-logo img {
-    width: 50px;
-  }
-  .index-container-logo {
-    right: 5px;
-    top: 5px;
-  }
-}
-
-.index-container a:link,
-.index-container a:visited {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  width: 300px;
-  height: 300px;
-  margin: 25px;
-  padding: 16px 50px;
-  text-decoration: none;
-  border: 3px solid #fff;
-  background-size: cover;
-  border-radius: 15px;
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.6);
-  transition: all 0.15s ease-in-out;
-}
-.index-container a:hover,
-.index-container a:active {
-  transform: scale(1.1);
-  box-shadow: 24px 24px 24px rgba(0, 0, 0, 0.3);
-  font-weight: bold;
-}
-.index-item::after {
-  content: "";
-  left: 0;
-  top: 72%;
-  background-color: rgba(1, 1, 1, 0.75);
-  position: absolute;
-  width: 100%;
-  height: 28%;
-  border-radius: 0 0 15px 15px;
-  transition: all 0.15s ease-in-out;
-}
-
-.index-item-1 {
-  background-image: url("./img/ai-generated-8979065_1280.jpg");
-}
-.index-item-2 {
-  background-image: url("./imG/ai-generated-8177911_1280.jpg");
-  background-position: center;
-}
-.index-item-3 {
-  background-image: url("./img/silownia.png");
-  background-position: calc(70%);
-}
-@media (max-width: 1050px) {
-  .index-container a:link,
-  .index-container a:visited {
-    width: 200px;
-    height: 200px;
-    margin: 20px;
-    padding: 8px 25px;
-  }
-  .index-school-title {
-    font-size: 14px;
-  }
-  .index-item-3 .index-school-title {
-    line-height: 14px;
-  }
-  .index-mzs-title {
-    font-size: 24px;
-  }
-  .index-mzs-subtitle {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 720px) {
-  .index-container {
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-  }
-  .index-container a:link,
-  .index-container a:visited {
-    margin: 10px;
-  }
-  .index-mzs-title {
-    margin-top: 10px;
-  }
-}
-
-/* A L L     N A V I G A T I O N */
-.container {
-  max-width: 1170px;
-  margin: auto;
-  padding: 0 15px;
-}
-
 /* H E A D E R */
 .header {
   position: absolute;
@@ -189,7 +24,6 @@ body {
 
   /* backdrop-filter: blur(25px); */
 }
-
 .header .container {
   display: flex;
   align-items: center;
@@ -483,99 +317,286 @@ body {
   }
 }
 
-/* ** *** **** ***** SP ***** **** *** ** */
-
-/* A L L     M A I N S*/
+/* *** *** I N D E X *** *** */
 .index-main-container {
-  background: url("./img/background_1280x1708.jpg");
-}
-.sp-main {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("../img/ai-generated-8979065_1280.jpg");
-}
-.sms-main {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("./img/silownia.png");
-}
-.lo-main {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("./img/ai-generated-8177911_1280.jpg");
-}
-.index-main-container,
-.sp-main,
-.sms-main,
-.lo-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url("./img/background-sp-1200x800.webP");
   min-height: 100vh;
-  /* height: 100%; */
   background-size: cover;
   background-position: center;
   background-position-y: top;
-  /* height: 100vh; */
 }
-.main-container {
+.index-main-container-top {
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: center;
+  align-items: center;
+}
+.index-logo-top {
+  padding-top: 10px;
+  width: 250px;
+}
+@media (max-width: 1050px) {
+  .index-logo-top {
+    width: 175px;
+  }
+}
+
+.index-logo-top img {
+  width: 100%;
+}
+.index-mzs-title,
+.index-mzs-subtitle {
+  text-align: center;
+  margin: 5px 0;
+  color: #e6e6e6;
+  font-weight: bold;
+  text-shadow: 0 0 10px #000000;
+}
+.index-mzs-title {
+  text-transform: uppercase;
+  padding-top: 10px;
+  font-size: 48px;
+}
+.index-mzs-subtitle {
+  font-size: 30px;
+}
+
+.index-school-title {
+  text-transform: uppercase;
+  font-size: 20px;
+  color: #e6e6e6;
+  z-index: 100;
+}
+
+.index-item-3 .index-school-title {
+  line-height: 20px;
+}
+
+.index-container {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+.index-container-logo {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.index-container-logo img {
+  width: 75px;
+}
+@media (max-width: 1050px) {
+  .index-container-logo img {
+    width: 50px;
+  }
+  .index-container-logo {
+    right: 5px;
+    top: 5px;
+  }
+}
+
+.index-container a:link,
+.index-container a:visited {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 300px;
+  height: 300px;
+  margin: 25px;
+  padding: 16px 50px;
+  text-decoration: none;
+  border: 3px solid #fff;
+  background-size: cover;
+  border-radius: 15px;
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.6);
+  transition: all 0.15s ease-in-out;
+}
+.index-container a:hover,
+.index-container a:active {
+  transform: scale(1.1);
+  box-shadow: 24px 24px 24px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+}
+.index-item::after {
+  content: "";
+  left: 0;
+  top: 72%;
+  background-color: rgba(1, 1, 1, 0.75);
+  position: absolute;
+  width: 100%;
+  height: 28%;
+  border-radius: 0 0 15px 15px;
+  transition: all 0.15s ease-in-out;
+}
+
+.index-item-1 {
+  background-image: url("./img/szkola-podstawowa-500x500.webP");
+}
+.index-item-2 {
+  background-image: url("./img/liceum-ogolnoksztalcace-500x500.webP");
+  background-position: center;
+}
+.index-item-3 {
+  background-image: url("./img/liceum-mistrzostwa-sportowego-500x500.webP");
+}
+@media (max-width: 1050px) {
+  .index-container a:link,
+  .index-container a:visited {
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    padding: 8px 25px;
+  }
+  .index-school-title {
+    font-size: 14px;
+  }
+  .index-item-3 .index-school-title {
+    line-height: 14px;
+  }
+  .index-mzs-title {
+    font-size: 24px;
+  }
+  .index-mzs-subtitle {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 720px) {
+  .index-container {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .index-container a:link,
+  .index-container a:visited {
+    margin: 10px;
+  }
+  .index-mzs-title {
+    margin-top: 10px;
+  }
+}
+
+/* A L L     N A V I G A T I O N */
+.container {
+  max-width: 1170px;
+  margin: auto;
+  padding: 0 15px;
+}
+
+/* S T A R T E R */
+
+.starter-sp {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("./img/background-sp-1200x800.webP");
+  background-size: cover;
+}
+.starter-sms {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./img/background-sms-1200x800.webP");
+  background-size: cover;
+}
+.starter-lo {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./img/background-lo-1200x800.webP");
+  background-size: cover;
+}
+
+.starter-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   z-index: 9;
   max-width: 1170px;
   margin: auto;
-  /* margin-top: 150px; */
   padding: 25px;
+  padding-top: 100px;
   color: #f1f1f1;
   text-align: center;
   height: 100%;
   min-height: 100vh;
 }
-.main-title {
-  font-size: 48px;
+.starter-top {
+  align-self: flex-end;
 }
-.main-subtitle {
-  margin-top: 30px;
-}
-@media (max-width: 991px) {
-  .main-title {
-    font-size: 36px;
-  }
-  .main-subtitle {
-    font-size: 20px;
-  }
-}
-@media (max-width: 601px) {
-  .main-title {
-    font-size: 28px;
-  }
-  .main-subtitle {
-    font-size: 18px;
-  }
+.starter-top img {
+  margin-top: 25px;
+  width: 150px;
+  border-radius: 5px;
 }
 
-.logo-duszniki {
+.starter-title {
+  font-size: 48px;
+}
+
+.starter-subtitle {
+  margin-top: 30px;
+}
+
+.starter-logo-duszniki {
   z-index: 1;
   margin-bottom: 10px;
   width: 300px;
 }
+
+@media (max-width: 991px) {
+  .starter-title {
+    font-size: 36px;
+  }
+  .starter-subtitle {
+    font-size: 20px;
+  }
+}
+@media (max-width: 601px) {
+  .starter-title {
+    font-size: 28px;
+  }
+  .starter-subtitle {
+    font-size: 18px;
+  }
+}
+
 @media (max-width: 601px) {
   .logo-duszniki {
     width: 200px;
   }
 }
 
-/* P R O J E C T S*/
-.main-container-projects {
+/* I N T R O */
+.intro-sp {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("./img/background-sp-1200x800.webP");
+  background-size: cover;
+}
+
+.intro-container {
   max-width: 1170px;
   margin: 0 auto;
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  padding: 50px 50px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 100px 50px 50px 50px;
   color: #f1f1f1;
-  height: 100vh;
+  min-height: 65vh;
 }
+.intro-top {
+  align-self: flex-end;
+}
+.intro-top img {
+  margin-top: 25px;
+  width: 150px;
+  border-radius: 5px;
+}
+/* * * S E C T I O N * * */
 
 .section-h1 {
   margin-top: 20px;
-  font-size: 98px;
+  font-size: 68px;
   text-shadow: 0 0 10px #000000;
 }
 .section-h2 {
