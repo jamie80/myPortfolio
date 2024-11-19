@@ -511,7 +511,7 @@ body {
 .starter-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   z-index: 9;
   max-width: 1170px;
@@ -607,7 +607,7 @@ body {
 }
 .section-h3 {
   font-size: 24px;
-  margin-bottom: 20px;
+  margin: 16px 0px;
   color: #0e1e4d;
 }
 .section-p {
@@ -616,10 +616,14 @@ body {
   margin-bottom: 10px;
   line-height: 28px;
 }
+.section-h3:first-child {
+  margin: 0 0 16px 0;
+}
 .section-li {
   color: #0e1e4d;
   font-size: 16px;
   margin-bottom: 10px;
+  margin-left: 20px;
   line-height: 28px;
 }
 
@@ -721,15 +725,24 @@ body {
   border-radius: 5px;
   box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.1); */
 }
+.unordered-list-item {
+  margin-left: 20px;
+}
 
 .unordered-list-item a:link,
 .unordered-list-item a:visited {
-  color: #fff;
+  color: #0e1e4d;
   padding: 10px 20px;
   text-decoration: none;
   display: inline-block;
+  font-weight: bold;
   transition: all 0.1s linear;
 }
+
+/* color: #0e1e4d;
+  font-size: 16px;
+  margin-bottom: 10px;
+  line-height: 28px; */
 
 .unordered-list-item a:hover,
 .unordered-list-item a:active {
@@ -738,7 +751,7 @@ body {
 
 .unordered-list-item a::after {
   content: "";
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #0e1e4d;
   display: block;
   transform: scaleX(0);
   transform-origin: 0% 50%;
@@ -763,12 +776,10 @@ body {
   border-top: 1px solid #ddd;
 }
 .footer {
-  min-height: 300px;
+  min-height: 250px;
   max-width: 1170px;
   margin: 0 auto;
-  padding: 75px 30px;
-}
-.footer-top {
+  padding: 30px;
 }
 
 .footer-top {
@@ -791,16 +802,26 @@ body {
   align-items: center;
   justify-content: flex-start;
   margin-bottom: 15px;
+  padding-bottom: 15px;
+  /* border-bottom: 1px solid #0e1e4d; */
+  position: relative;
+}
+.footer-heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  width: 35px;
+  height: 2px;
+  background-color: #fb9f00;
 }
 .footer-heading p {
   font-size: 20px;
   font-weight: bold;
   color: #0e1e4d;
 }
-.footer-content {
-  /* margin-left: 32px; */
-}
 .footer-content p {
   font-size: 16px;
-  margin-bottom: 5px;
+  color: #252525;
+  margin-bottom: 10px;
 }
