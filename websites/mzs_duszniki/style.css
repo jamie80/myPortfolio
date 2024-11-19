@@ -653,7 +653,7 @@ body {
 }
 .section-bottom-image img {
   max-width: 100%;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 .triple-container {
   display: flex;
