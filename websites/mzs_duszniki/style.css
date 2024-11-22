@@ -168,9 +168,14 @@ body {
   cursor: pointer;
   color: rgb(255, 255, 255);
   font-size: 32px;
-  margin: 0 20px;
+  margin: 0 10px;
 }
-
+.header-right .icon-btn img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-top: 4px;
+}
 .header-right .open-menu-btn {
   display: none;
 }
@@ -671,7 +676,7 @@ body {
   transform: scale(1.1);
 }
 .text-orange {
-  color: #fb9f00;
+  color: #996100;
   padding: 30px 0 15px;
   display: inline-block;
   font-weight: bold;
@@ -813,7 +818,7 @@ body {
   bottom: 0px;
   width: 35px;
   height: 2px;
-  background-color: #fb9f00;
+  background-color: #996100;
 }
 .footer-heading p {
   font-size: 20px;
