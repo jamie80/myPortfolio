@@ -577,7 +577,11 @@ body {
     url("./img/background-lo-1200x800.webP");
   background-size: cover;
 }
-
+.intro-sms {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./img/background-sms-1200x800.webP");
+  background-size: cover;
+}
 .intro-container {
   max-width: 1170px;
   margin: 0 auto;
