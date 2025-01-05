@@ -839,3 +839,127 @@ body {
   color: #252525;
   margin-bottom: 10px;
 }
+
+/* N E W    F O O T E R */
+.border-top {
+  border-top: 1px solid #ddd;
+}
+.new-footer {
+  min-height: 250px;
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 20px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.new-footer h4 {
+  margin-bottom: 20px;
+  color: #0e1e4d;
+  font-size: 20px;
+  font-weight: bold;
+}
+/* .new-footer i,
+.new-footer p {
+  color: #252525;
+} */
+.new-footer-top {
+  display: flex;
+  justify-content: space-evenly;
+  column-gap: 25px;
+}
+.new-footer-info {
+  display: flex;
+  column-gap: 10px;
+  margin-bottom: 5px;
+}
+.new-footer-info i {
+  color: #0e1e4d;
+}
+.new-footer-info-content p {
+  color: #0e1e4d;
+  /* font-weight: bold; */
+}
+.new-footer-bottom {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.copyright {
+  font-size: 14px;
+}
+/*Links on the left side in footer*/
+
+/* .new-footer-link {
+  margin-left: 20px;
+} */
+.new-footer-link a:link,
+.new-footer-link a:visited {
+  color: #0e1e4d;
+  /* padding: 0px 0px 5px; */
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  transition: all 0.1s linear;
+}
+
+.new-footer-link a:hover,
+.new-footer-link a:active {
+  transform: scale(1.05);
+}
+
+.new-footer-link a::after {
+  content: "";
+  border-bottom: 1px solid #0e1e4d;
+  display: block;
+  transform: scaleX(0);
+  transform-origin: 0% 50%;
+  transition: all 0.3s linear;
+}
+
+.new-footer-link a:hover::after {
+  transform: scaleX(1);
+}
+
+/*Links on the right side in footer*/
+.unordered-list-item-new-footer {
+  margin-left: 20px;
+}
+
+.unordered-list-item-new-footer a:link,
+.unordered-list-item-new-footer a:visited {
+  color: #0e1e4d;
+  padding: 0px 20px 5px;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  transition: all 0.1s linear;
+}
+
+.unordered-list-item-new-footer a:hover,
+.unordered-list-item-new-footer a:active {
+  transform: scale(1.05);
+}
+
+.unordered-list-item-new-footer a::after {
+  content: "";
+  border-bottom: 1px solid #0e1e4d;
+  display: block;
+  transform: scaleX(0);
+  transform-origin: 0% 50%;
+  transition: all 0.3s linear;
+}
+
+.unordered-list-item-new-footer a:hover::after {
+  transform: scaleX(1);
+}
+/*Footer media*/
+@media (max-width: 700px) {
+  .new-footer-top {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+}
