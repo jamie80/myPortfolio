@@ -826,7 +826,24 @@ body {
 .unordered-list-item a:hover::after {
   transform: scaleX(1);
 }
-
+/*NEW*/
+.unordered-list-item-new {
+  list-style: none;
+  margin-left: 20px;
+}
+.unordered-list-item-new a:link,
+.unordered-list-item-new a:visited {
+  color: #0e1e4d;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  transition: all 0.1s linear;
+}
+.unordered-list-item-new a:hover,
+.unordered-list-item-new a:active {
+  transform: scale(1.05);
+}
 .background {
   background-color: rgba(0, 0, 0, 0.3);
   display: inline-block;
