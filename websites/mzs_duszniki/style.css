@@ -844,6 +844,15 @@ body {
 .unordered-list-item-new a:active {
   transform: scale(1.05);
 }
+
+ol li {
+  font-weight: bold;
+}
+
+ol li ul li {
+  font-weight: normal;
+}
+
 .background {
   background-color: rgba(0, 0, 0, 0.3);
   display: inline-block;
