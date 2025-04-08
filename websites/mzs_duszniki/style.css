@@ -1096,3 +1096,72 @@ ol li ul li {
     margin-bottom: 10px;
   }
 }
+
+/* C O O K I E S */
+.cookies-link:link,
+.cookies-link:visited {
+  color: #3b8a3d;
+}
+.cookies-link:hover,
+.cookies-link:active {
+  color: #588d5a;
+}
+.cookies-p {
+  padding: 10px 10px;
+}
+.cookies-banner {
+  filter: opacity(0.97);
+  position: fixed;
+  bottom: 0;
+  left: 0px;
+  width: 100%;
+  background-color: #1f1d1d;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  display: none; /* Domyślnie ukryty */
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  z-index: 1000000;
+}
+@media (max-width: 1100px) {
+  .cookies-banner {
+    flex-direction: column;
+  }
+}
+.cookies-banner p {
+  margin: 0;
+  font-size: 14px;
+}
+.cookies-content {
+  max-width: 900px;
+}
+.cookies-buttons {
+  min-width: 270px;
+  padding: 15px;
+}
+
+button.cookies-button {
+  margin: 0px 5px;
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #3b8a3d;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+button.cookies-button:hover {
+  background-color: #27612a;
+}
+
+button#decline-btn.cookies-button {
+  background-color: #f44336;
+}
+
+button#decline-btn.cookies-button:hover {
+  background-color: #7e1f1e;
+}
