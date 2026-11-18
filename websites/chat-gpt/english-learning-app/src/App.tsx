@@ -1,6 +1,25 @@
 import { useState } from "react";
 import "./App.css";
 
+const categoryColors = [
+  { background: "#fff0d9", border: "#edc477" },
+  { background: "#ffe5ed", border: "#e9a9bf" },
+  { background: "#e2edff", border: "#a9c5ef" },
+  { background: "#e1f6e9", border: "#a8d8b8" },
+  { background: "#eee5ff", border: "#c5adeb" },
+  { background: "#fff0e5", border: "#e9c1a2" },
+  { background: "#e1f3f5", border: "#a5d1d7" },
+  { background: "#f5e9f8", border: "#d6b5df" },
+  { background: "#f5f0d9", border: "#d8cc8e" },
+  { background: "#e8f0e1", border: "#b7cda5" },
+  { background: "#fce8df", border: "#e5b6a4" },
+  { background: "#e8e8fa", border: "#b8b8df" },
+  { background: "#e4f0e8", border: "#a9cbb5" },
+  { background: "#f9e8ef", border: "#dfb2c5" },
+  { background: "#e7edf7", border: "#b5c5df" },
+  { background: "#f4ebdf", border: "#d8c0a1" },
+];
+
 const categories = [
   {
     name: "Animals",
@@ -102,6 +121,12 @@ function App() {
   const [showAnimals, setShowAnimals] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("Animals");
   const currentItems = categoryItems[selectedCategory];
+  const currentCategoryIndex = categories.findIndex(
+    (category) => category.name === selectedCategory,
+  );
+
+  const currentCategoryColor =
+    categoryColors[currentCategoryIndex % categoryColors.length];
 
   const currentCategory = categories.find(
     (category) => category.name === selectedCategory,
@@ -488,6 +513,10 @@ function App() {
                 {currentItems.map((item) => (
                   <article
                     className="animal-card"
+                    style={{
+                      backgroundColor: currentCategoryColor.background,
+                      borderColor: currentCategoryColor.border,
+                    }}
                     key={item.name}
                     onClick={() => {
                       const word = new SpeechSynthesisUtterance(item.name);
@@ -533,11 +562,15 @@ function App() {
         <h2>Choose your topic</h2>
 
         <div className="category-grid">
-          {categories.map((category) => (
+          {categories.map((category, index) => (
             <article
-              className={`category-card ${category.color} ${
-                category.name === "Animals" ? "active-category" : ""
-              }`}
+              className="category-card"
+              style={{
+                backgroundColor:
+                  categoryColors[index % categoryColors.length].background,
+                borderColor:
+                  categoryColors[index % categoryColors.length].border,
+              }}
               key={category.name}
               onClick={() => {
                 setSelectedCategory(category.name);
