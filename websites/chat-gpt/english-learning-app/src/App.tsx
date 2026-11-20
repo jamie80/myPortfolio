@@ -132,14 +132,6 @@ function App() {
     (category) => category.name === selectedCategory,
   );
 
-  const [, setSelectedAnimal] = useState<number | null>(null);
-  const [, setAnswerShown] = useState(false);
-  const [animalResults, setAnimalResults] = useState<{
-    [key: number]: "known" | "practice";
-  }>({});
-  const [practiceMode, setPracticeMode] = useState(false);
-  const [, setPracticeList] = useState<number[]>([]);
-
   // QUIZ STATE
 
   const [quizOrder, setQuizOrder] = useState<number[]>([]);
@@ -150,6 +142,8 @@ function App() {
 
   const [correctCount, setCorrectCount] = useState(0);
   const [incorrectCount, setIncorrectCount] = useState(0);
+
+  const [showMatch, setShowMatch] = useState(false);
 
   const quizPercentage =
     quizOrder.length > 0
@@ -166,20 +160,6 @@ function App() {
           : quizPercentage >= 40
             ? "🙁"
             : "😢";
-
-  const knownCount = Object.values(animalResults).filter(
-    (result) => result === "known",
-  ).length;
-
-  const practiceCount = Object.values(animalResults).filter(
-    (result) => result === "practice",
-  ).length;
-
-  const getPracticeList = () => {
-    return animals
-      .map((_, index) => index)
-      .filter((index) => animalResults[index] === "practice");
-  };
 
   const startQuiz = () => {
     const randomOrder = shuffleArray(currentItems.map((_, index) => index));
@@ -214,12 +194,6 @@ function App() {
                 setSelectedAnswer(null);
                 setCorrectCount(0);
                 setIncorrectCount(0);
-
-                setAnimalResults({});
-                setPracticeMode(false);
-                setPracticeList([]);
-                setSelectedAnimal(null);
-                setAnswerShown(false);
               }}
               aria-label="Back to home"
               title="Back to home"
@@ -250,11 +224,6 @@ function App() {
                   setSelectedAnswer(null);
                   setCorrectCount(0);
                   setIncorrectCount(0);
-                  setAnimalResults({});
-                  setPracticeMode(false);
-                  setPracticeList([]);
-                  setSelectedAnimal(null);
-                  setAnswerShown(false);
                 }}
                 aria-label="Back to animal cards"
                 title="Back to animal cards"
@@ -278,7 +247,7 @@ function App() {
             )}
           </div>
 
-          {quizOrder.length === 0 && (
+          {quizOrder.length === 0 && !showMatch && (
             <>
               <h1>
                 {currentCategory?.name} {currentCategory?.emoji}
@@ -286,110 +255,11 @@ function App() {
               <p>Learn new English words!</p>
             </>
           )}
-          {Object.keys(animalResults).length === animals.length &&
-          !practiceMode ? (
-            <div className="summary">
-              <div className="summary-emoji">🎉</div>
 
-              <h2>Great job!</h2>
-
-              <p>You have completed all animals!</p>
-
-              <div className="summary-stats">
-                <div>
-                  <span>✓</span>
-                  <strong>{knownCount}</strong>
-                  <p>Known words</p>
-                </div>
-
-                <div>
-                  <span>✕</span>
-                  <strong>{practiceCount}</strong>
-                  <p>To practice</p>
-                </div>
-              </div>
-
-              <div className="summary-percentage">
-                <p>Words you know</p>
-                <strong>
-                  {Math.round((knownCount / animals.length) * 100)}%
-                </strong>
-              </div>
-              {practiceCount > 0 && (
-                <button
-                  className="practice-again-button"
-                  onClick={() => {
-                    const list = getPracticeList();
-
-                    setPracticeList(list);
-                    setPracticeMode(true);
-                    setSelectedAnimal(list[0]);
-                    setAnswerShown(false);
-                  }}
-                >
-                  <span className="practice-again-icon">
-                    <svg viewBox="0 0 100 100" aria-hidden="true">
-                      <path
-                        d="M78 38 A32 32 0 1 0 78 64"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="8"
-                        strokeLinecap="round"
-                      />
-                      <path
-                        d="M67 22 L82 36 L62 42"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="8"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M39 39 L61 61 M61 39 L39 61"
-                        stroke="#dc2626"
-                        strokeWidth="9"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </span>
-
-                  <span className="practice-again-count">{practiceCount}</span>
-                </button>
-              )}
-              <button
-                onClick={() => {
-                  setAnimalResults({});
-                  setPracticeMode(false);
-                  setPracticeList([]);
-                  setSelectedAnimal(0);
-                  setAnswerShown(false);
-                }}
-              >
-                Learn all
-              </button>
-              <button
-                onClick={() => {
-                  setShowAnimals(false);
-                  setAnimalResults({});
-                  setPracticeMode(false);
-                  setPracticeList([]);
-                  setSelectedAnimal(null);
-                  setAnswerShown(false);
-                }}
-              >
-                Back to home
-              </button>
-              <button
-                onClick={() => {
-                  setAnimalResults({});
-                  setSelectedAnimal(0);
-                  setAnswerShown(false);
-                  setPracticeMode(false);
-                  setPracticeList([]);
-                }}
-              >
-                Start again ↻
-              </button>
+          {showMatch ? (
+            <div className="match-game">
+              <h2>MATCH</h2>
+              <p>Match the words with the pictures!</p>
             </div>
           ) : quizOrder.length > 0 && questionPosition < quizOrder.length ? (
             <div className="quiz">
@@ -533,9 +403,18 @@ function App() {
                   </article>
                 ))}
               </div>
-              <button className="start-learning-button" onClick={startQuiz}>
-                START ▶
-              </button>
+              <div className="game-buttons">
+                <button className="game-button quiz-button" onClick={startQuiz}>
+                  ❓ QUIZ
+                </button>
+
+                <button
+                  className="game-button match-button"
+                  onClick={() => setShowMatch(true)}
+                >
+                  🔗 MATCH
+                </button>
+              </div>
             </>
           )}
         </section>
