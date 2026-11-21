@@ -827,3 +827,86 @@ footer {
   border-color: #8799f5;
   box-shadow: 0 8px 20px rgba(67, 91, 210, 0.18);
 }
+.match-game {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.match-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+.match-card {
+  padding: 15px;
+  border: 2px solid #dce3ed;
+  border-radius: 16px;
+  background: white;
+}
+
+.match-image {
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 75px;
+}
+
+.match-drop-zone {
+  height: 48px;
+  margin-top: 12px;
+  border: 2px dashed #a9b6c8;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+@media (max-width: 500px) {
+  .match-grid {
+    gap: 12px;
+  }
+
+  .match-card {
+    padding: 10px;
+  }
+
+  .match-image {
+    height: 90px;
+    font-size: 60px;
+  }
+}
+.match-words {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 25px auto;
+}
+
+.match-word {
+  min-width: 110px;
+  padding: 12px 20px;
+  border: 2px solid #a9c5ef;
+  border-radius: 10px;
+  background: #e2edff;
+  color: #315a9b;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: grab;
+  user-select: none;
+}
+.match-drop-zone.matched {
+  border: 2px solid #8bc9a0;
+  background: #e1f6e9;
+  color: #267548;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 const categoryColors = [
@@ -117,6 +117,16 @@ function createAnswerOptions(correctItem: number, items: LearningItem[]) {
   return shuffleArray([correctItem, ...randomWrongAnswers]);
 }
 
+function speakWord(word: string) {
+  const utterance = new SpeechSynthesisUtterance(word);
+
+  utterance.lang = "en-US";
+  utterance.rate = 0.85;
+  utterance.pitch = 1;
+
+  window.speechSynthesis.speak(utterance);
+}
+
 function App() {
   const [showAnimals, setShowAnimals] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("Animals");
@@ -144,6 +154,12 @@ function App() {
   const [incorrectCount, setIncorrectCount] = useState(0);
 
   const [showMatch, setShowMatch] = useState(false);
+  const [matchOrder, setMatchOrder] = useState<number[]>([]);
+  const [matchRound, setMatchRound] = useState(0);
+  const [matchedItems, setMatchedItems] = useState<number[]>([]);
+  const [draggedItem, setDraggedItem] = useState<number | null>(null);
+  const [matchWords, setMatchWords] = useState<number[]>([]);
+  const [matchRoundComplete, setMatchRoundComplete] = useState(false);
 
   const quizPercentage =
     quizOrder.length > 0
@@ -173,6 +189,40 @@ function App() {
     setAnswerOptions(createAnswerOptions(randomOrder[0], currentItems));
   };
 
+  useEffect(() => {
+    if (!showMatch || !matchRoundComplete) {
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      const nextRound = matchRound + 1;
+      const nextWords = matchOrder.slice(nextRound * 4, nextRound * 4 + 4);
+
+      if (nextWords.length > 0) {
+        setMatchRound(nextRound);
+        setMatchedItems([]);
+        setMatchWords(shuffleArray(nextWords));
+        setMatchRoundComplete(false);
+      } else {
+        setShowMatch(false);
+        setMatchRoundComplete(false);
+      }
+    }, 1200);
+
+    return () => clearTimeout(timer);
+  }, [showMatch, matchRoundComplete, matchRound, matchOrder]);
+
+  const startMatch = () => {
+    const randomOrder = shuffleArray(currentItems.map((_, index) => index));
+
+    setMatchOrder(randomOrder);
+    setMatchRound(0);
+    setMatchedItems([]);
+    setDraggedItem(null);
+    setMatchWords(shuffleArray(randomOrder.slice(0, 4)));
+    setShowMatch(true);
+  };
+
   if (showAnimals) {
     return (
       <main className="app">
@@ -189,11 +239,21 @@ function App() {
               onClick={() => {
                 setShowAnimals(false);
 
+                // Reset QUIZ
                 setQuizOrder([]);
                 setQuestionPosition(0);
                 setSelectedAnswer(null);
                 setCorrectCount(0);
                 setIncorrectCount(0);
+
+                // Reset MATCH
+                setShowMatch(false);
+                setMatchOrder([]);
+                setMatchRound(0);
+                setMatchedItems([]);
+                setDraggedItem(null);
+                setMatchWords([]);
+                setMatchRoundComplete(false);
               }}
               aria-label="Back to home"
               title="Back to home"
@@ -214,7 +274,39 @@ function App() {
               </svg>
             </button>
 
-            {/* Powrót do kart zwierząt */}
+            {/* Powrót do kart */}
+            {showMatch && (
+              <button
+                className="back-button"
+                onClick={() => {
+                  setShowMatch(false);
+                  setMatchOrder([]);
+                  setMatchRound(0);
+                  setMatchedItems([]);
+                  setDraggedItem(null);
+                  setMatchWords([]);
+                  setMatchRoundComplete(false);
+                }}
+                aria-label={`Back to ${selectedCategory} cards`}
+                title={`Back to ${selectedCategory} cards`}
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="27"
+                  height="27"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect x="3" y="3" width="8" height="8" rx="1" />
+                  <rect x="13" y="3" width="8" height="8" rx="1" />
+                  <rect x="3" y="13" width="8" height="8" rx="1" />
+                  <rect x="13" y="13" width="8" height="8" rx="1" />
+                </svg>
+              </button>
+            )}
             {quizOrder.length > 0 && (
               <button
                 className="back-button"
@@ -225,8 +317,8 @@ function App() {
                   setCorrectCount(0);
                   setIncorrectCount(0);
                 }}
-                aria-label="Back to animal cards"
-                title="Back to animal cards"
+                aria-label={`Back to ${selectedCategory} cards`}
+                title={`Back to ${selectedCategory} cards`}
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -260,6 +352,69 @@ function App() {
             <div className="match-game">
               <h2>MATCH</h2>
               <p>Match the words with the pictures!</p>
+
+              <div className="match-grid">
+                {matchOrder
+                  .slice(matchRound * 4, matchRound * 4 + 4)
+                  .map((itemIndex) => (
+                    <div className="match-card" key={itemIndex}>
+                      <div className="match-image">
+                        {currentItems[itemIndex].emoji}
+                      </div>
+
+                      <div
+                        className={`match-drop-zone ${
+                          matchedItems.includes(itemIndex) ? "matched" : ""
+                        }`}
+                        onDragOver={(event) => event.preventDefault()}
+                        onDrop={(event) => {
+                          event.preventDefault();
+
+                          if (
+                            draggedItem === itemIndex &&
+                            !matchedItems.includes(itemIndex)
+                          ) {
+                            const newMatchedItems = [
+                              ...matchedItems,
+                              itemIndex,
+                            ];
+
+                            setMatchedItems(newMatchedItems);
+                            speakWord(currentItems[itemIndex].name);
+
+                            if (
+                              matchWords.every((word) =>
+                                newMatchedItems.includes(word),
+                              )
+                            ) {
+                              setMatchRoundComplete(true);
+                            }
+                          }
+
+                          setDraggedItem(null);
+                        }}
+                      >
+                        {matchedItems.includes(itemIndex) &&
+                          currentItems[itemIndex].name}
+                      </div>
+                    </div>
+                  ))}
+              </div>
+              <div className="match-words">
+                {matchWords
+                  .filter((itemIndex) => !matchedItems.includes(itemIndex))
+                  .map((itemIndex) => (
+                    <div
+                      className="match-word"
+                      key={itemIndex}
+                      draggable
+                      onDragStart={() => setDraggedItem(itemIndex)}
+                      onDragEnd={() => setDraggedItem(null)}
+                    >
+                      {currentItems[itemIndex].name}
+                    </div>
+                  ))}
+              </div>
             </div>
           ) : quizOrder.length > 0 && questionPosition < quizOrder.length ? (
             <div className="quiz">
@@ -410,7 +565,7 @@ function App() {
 
                 <button
                   className="game-button match-button"
-                  onClick={() => setShowMatch(true)}
+                  onClick={startMatch}
                 >
                   🔗 MATCH
                 </button>
