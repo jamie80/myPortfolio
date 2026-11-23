@@ -910,3 +910,10 @@ footer {
   align-items: center;
   justify-content: center;
 }
+
+.category-card {
+  background: #ffffff !important;
+}
+.category-card {
+  border-color: #dce3ed !important;
+}
