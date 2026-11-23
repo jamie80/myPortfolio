@@ -160,6 +160,9 @@ function App() {
   const [draggedItem, setDraggedItem] = useState<number | null>(null);
   const [matchWords, setMatchWords] = useState<number[]>([]);
   const [matchRoundComplete, setMatchRoundComplete] = useState(false);
+  const [matchCorrectCount, setMatchCorrectCount] = useState(0);
+  const [matchIncorrectCount, setMatchIncorrectCount] = useState(0);
+  const [showMatchResults, setShowMatchResults] = useState(false);
 
   const quizPercentage =
     quizOrder.length > 0
@@ -174,6 +177,24 @@ function App() {
         : quizPercentage >= 60
           ? "😐"
           : quizPercentage >= 40
+            ? "🙁"
+            : "😢";
+
+  const matchTotalAttempts = matchCorrectCount + matchIncorrectCount;
+
+  const matchPercentage =
+    matchTotalAttempts > 0
+      ? Math.round((matchCorrectCount / matchTotalAttempts) * 100)
+      : 0;
+
+  const matchFace =
+    matchPercentage >= 90
+      ? "🤩"
+      : matchPercentage >= 75
+        ? "🙂"
+        : matchPercentage >= 60
+          ? "😐"
+          : matchPercentage >= 40
             ? "🙁"
             : "😢";
 
@@ -206,6 +227,7 @@ function App() {
       } else {
         setShowMatch(false);
         setMatchRoundComplete(false);
+        setShowMatchResults(true);
       }
     }, 1200);
 
@@ -218,6 +240,8 @@ function App() {
     setMatchOrder(randomOrder);
     setMatchRound(0);
     setMatchedItems([]);
+    setMatchCorrectCount(0);
+    setMatchIncorrectCount(0);
     setDraggedItem(null);
     setMatchWords(shuffleArray(randomOrder.slice(0, 4)));
     setShowMatch(true);
@@ -380,6 +404,7 @@ function App() {
                             ];
 
                             setMatchedItems(newMatchedItems);
+                            setMatchCorrectCount((prev) => prev + 1);
                             speakWord(currentItems[itemIndex].name);
 
                             if (
@@ -389,6 +414,12 @@ function App() {
                             ) {
                               setMatchRoundComplete(true);
                             }
+                          } else if (
+                            draggedItem !== null &&
+                            draggedItem !== itemIndex &&
+                            !matchedItems.includes(itemIndex)
+                          ) {
+                            setMatchIncorrectCount((prev) => prev + 1);
                           }
 
                           setDraggedItem(null);
@@ -415,6 +446,24 @@ function App() {
                     </div>
                   ))}
               </div>
+            </div>
+          ) : showMatchResults ? (
+            <div className="summary">
+              <div className="summary-emoji">{matchFace}</div>
+
+              <div className="summary-percentage">
+                <strong>{matchPercentage}%</strong>
+              </div>
+
+              <button
+                className="start-learning-button"
+                onClick={() => {
+                  setShowMatchResults(false);
+                  startMatch();
+                }}
+              >
+                PLAY AGAIN ↻
+              </button>
             </div>
           ) : quizOrder.length > 0 && questionPosition < quizOrder.length ? (
             <div className="quiz">
@@ -539,8 +588,8 @@ function App() {
                   <article
                     className="animal-card"
                     style={{
-                      backgroundColor: currentCategoryColor.background,
-                      borderColor: currentCategoryColor.border,
+                      backgroundColor: "#ffffff",
+                      borderColor: "#dce3ed",
                     }}
                     key={item.name}
                     onClick={() => {
