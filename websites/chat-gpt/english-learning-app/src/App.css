@@ -237,16 +237,16 @@ footer {
   margin-bottom: 30px;
 }
 
-/* ANIMAL GRID */
+/* WORD GRID */
 
-.animal-grid {
+.word-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
   padding: 15px 5px;
 }
 
-.animal-card {
+.word-card {
   background: #fff0d9;
   border: 2px solid #f5d9ad;
   border-radius: 20px;
@@ -261,14 +261,14 @@ footer {
   cursor: pointer;
 }
 
-.animal-card:hover {
+.word-card:hover {
   border-color: #8799f5 !important;
   box-shadow: 0 8px 20px rgba(67, 91, 210, 0.18);
 }
 
-/* Animal illustration */
+/* Word illustration */
 
-.animal-emoji {
+.word-emoji {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -279,9 +279,9 @@ footer {
   margin-bottom: 15px;
 }
 
-/* Animal name */
+/* Word name */
 
-.animal-card h2 {
+.word-card h2 {
   font-size: 21px;
   color: #435bd2;
   margin: 0;
@@ -291,27 +291,27 @@ footer {
 /* Responsive layout */
 
 @media (max-width: 800px) {
-  .animal-grid {
+  .word-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 500px) {
-  .animal-grid {
+  .word-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
   }
 
-  .animal-card {
+  .word-card {
     padding: 20px 10px;
   }
 
-  .animal-emoji {
+  .word-emoji {
     font-size: 55px;
     min-height: 70px;
   }
 
-  .animal-card h2 {
+  .word-card h2 {
     font-size: 18px;
   }
 }
@@ -909,11 +909,4 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.category-card {
-  background: #ffffff !important;
-}
-.category-card {
-  border-color: #dce3ed !important;
 }

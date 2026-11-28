@@ -20,29 +20,34 @@ const categoryColors = [
   { background: "#f4ebdf", border: "#d8c0a1" },
 ];
 
-const categories = [
+const categories: {
+  name: CategoryName;
+  emoji: string;
+  colorIndex: number;
+  description: string;
+}[] = [
   {
     name: "Animals",
     emoji: "🦁",
-    color: "orange",
+    colorIndex: 0,
     description: "Meet the animals!",
   },
   {
     name: "Food",
     emoji: "🍓",
-    color: "pink",
+    colorIndex: 1,
     description: "Yummy English words!",
   },
   {
     name: "Colors",
     emoji: "🎨",
-    color: "blue",
+    colorIndex: 2,
     description: "Discover the colors!",
   },
   {
     name: "Numbers",
     emoji: "🔢",
-    color: "green",
+    colorIndex: 3,
     description: "Count in English!",
   },
 ];
@@ -96,7 +101,9 @@ type LearningItem = {
   emoji: string;
 };
 
-const categoryItems: Record<string, LearningItem[]> = {
+type CategoryName = "Animals" | "Food" | "Colors" | "Numbers";
+
+const categoryItems: Record<CategoryName, LearningItem[]> = {
   Animals: animals,
   Food: food,
   Colors: colors,
@@ -104,7 +111,15 @@ const categoryItems: Record<string, LearningItem[]> = {
 };
 
 function shuffleArray(array: number[]) {
-  return [...array].sort(() => Math.random() - 0.5);
+  const shuffled = [...array];
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
 }
 
 function createAnswerOptions(correctItem: number, items: LearningItem[]) {
@@ -124,23 +139,21 @@ function speakWord(word: string) {
   utterance.rate = 0.85;
   utterance.pitch = 1;
 
+  window.speechSynthesis.cancel();
   window.speechSynthesis.speak(utterance);
 }
 
 function App() {
-  const [showAnimals, setShowAnimals] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("Animals");
+  const [showLearning, setShowLearning] = useState(false);
+  const [selectedCategory, setSelectedCategory] =
+    useState<CategoryName>("Animals");
   const currentItems = categoryItems[selectedCategory];
-  const currentCategoryIndex = categories.findIndex(
-    (category) => category.name === selectedCategory,
-  );
-
-  const currentCategoryColor =
-    categoryColors[currentCategoryIndex % categoryColors.length];
 
   const currentCategory = categories.find(
     (category) => category.name === selectedCategory,
-  );
+  )!;
+
+  const currentCategoryColor = categoryColors[currentCategory.colorIndex];
 
   // QUIZ STATE
 
@@ -163,6 +176,27 @@ function App() {
   const [matchCorrectCount, setMatchCorrectCount] = useState(0);
   const [matchIncorrectCount, setMatchIncorrectCount] = useState(0);
   const [showMatchResults, setShowMatchResults] = useState(false);
+
+  const resetQuiz = () => {
+    setQuizOrder([]);
+    setQuestionPosition(0);
+    setSelectedAnswer(null);
+    setCorrectCount(0);
+    setIncorrectCount(0);
+  };
+
+  const resetMatch = () => {
+    setShowMatch(false);
+    setShowMatchResults(false);
+    setMatchOrder([]);
+    setMatchRound(0);
+    setMatchedItems([]);
+    setDraggedItem(null);
+    setMatchWords([]);
+    setMatchRoundComplete(false);
+    setMatchCorrectCount(0);
+    setMatchIncorrectCount(0);
+  };
 
   const quizPercentage =
     quizOrder.length > 0
@@ -247,7 +281,7 @@ function App() {
     setShowMatch(true);
   };
 
-  if (showAnimals) {
+  if (showLearning) {
     return (
       <main className="app">
         <header className="header">
@@ -261,23 +295,11 @@ function App() {
             <button
               className="back-button"
               onClick={() => {
-                setShowAnimals(false);
+                setShowLearning(false);
 
-                // Reset QUIZ
-                setQuizOrder([]);
-                setQuestionPosition(0);
-                setSelectedAnswer(null);
-                setCorrectCount(0);
-                setIncorrectCount(0);
+                resetQuiz();
 
-                // Reset MATCH
-                setShowMatch(false);
-                setMatchOrder([]);
-                setMatchRound(0);
-                setMatchedItems([]);
-                setDraggedItem(null);
-                setMatchWords([]);
-                setMatchRoundComplete(false);
+                resetMatch();
               }}
               aria-label="Back to home"
               title="Back to home"
@@ -299,17 +321,11 @@ function App() {
             </button>
 
             {/* Powrót do kart */}
-            {showMatch && (
+            {(showMatch || showMatchResults) && (
               <button
                 className="back-button"
                 onClick={() => {
-                  setShowMatch(false);
-                  setMatchOrder([]);
-                  setMatchRound(0);
-                  setMatchedItems([]);
-                  setDraggedItem(null);
-                  setMatchWords([]);
-                  setMatchRoundComplete(false);
+                  resetMatch();
                 }}
                 aria-label={`Back to ${selectedCategory} cards`}
                 title={`Back to ${selectedCategory} cards`}
@@ -335,11 +351,7 @@ function App() {
               <button
                 className="back-button"
                 onClick={() => {
-                  setQuizOrder([]);
-                  setQuestionPosition(0);
-                  setSelectedAnswer(null);
-                  setCorrectCount(0);
-                  setIncorrectCount(0);
+                  resetQuiz();
                 }}
                 aria-label={`Back to ${selectedCategory} cards`}
                 title={`Back to ${selectedCategory} cards`}
@@ -512,15 +524,7 @@ function App() {
                       if (animalIndex === quizOrder[questionPosition]) {
                         setCorrectCount((count) => count + 1);
 
-                        const word = new SpeechSynthesisUtterance(
-                          currentItems[animalIndex].name,
-                        );
-
-                        word.lang = "en-US";
-                        word.rate = 0.85;
-
-                        window.speechSynthesis.cancel();
-                        window.speechSynthesis.speak(word);
+                        speakWord(currentItems[animalIndex].name);
                       } else {
                         setIncorrectCount((count) => count + 1);
                       }
@@ -583,26 +587,18 @@ function App() {
             </div>
           ) : (
             <>
-              <div className="animal-grid">
+              <div className="word-grid">
                 {currentItems.map((item) => (
                   <article
-                    className="animal-card"
+                    className="word-card"
                     style={{
-                      backgroundColor: "#ffffff",
-                      borderColor: "#dce3ed",
+                      backgroundColor: currentCategoryColor.background,
+                      borderColor: currentCategoryColor.border,
                     }}
                     key={item.name}
-                    onClick={() => {
-                      const word = new SpeechSynthesisUtterance(item.name);
-
-                      word.lang = "en-US";
-                      word.rate = 0.85;
-
-                      window.speechSynthesis.cancel();
-                      window.speechSynthesis.speak(word);
-                    }}
+                    onClick={() => speakWord(item.name)}
                   >
-                    <div className="animal-emoji">{item.emoji}</div>
+                    <div className="word-emoji">{item.emoji}</div>
                     <h2>{item.name}</h2>
                   </article>
                 ))}
@@ -645,19 +641,17 @@ function App() {
         <h2>Choose your topic</h2>
 
         <div className="category-grid">
-          {categories.map((category, index) => (
+          {categories.map((category) => (
             <article
               className="category-card"
               style={{
-                backgroundColor:
-                  categoryColors[index % categoryColors.length].background,
-                borderColor:
-                  categoryColors[index % categoryColors.length].border,
+                backgroundColor: categoryColors[category.colorIndex].background,
+                borderColor: categoryColors[category.colorIndex].border,
               }}
               key={category.name}
               onClick={() => {
                 setSelectedCategory(category.name);
-                setShowAnimals(true);
+                setShowLearning(true);
               }}
             >
               <div className="category-emoji">{category.emoji}</div>
